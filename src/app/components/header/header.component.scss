@@ -8,7 +8,19 @@
   &__wrap {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: space-between;
     width: 60vw;
+  }
+
+  &__home {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
   }
 }
