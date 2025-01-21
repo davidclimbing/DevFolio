@@ -5,9 +5,26 @@
   justify-content: center;
 
   &__wrap {
-    width: 60vw;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgb(21, 19, 18);
+  }
+
+  &__profile-pane {
     display: flex;
     flex-direction: column;
-    color: #FFFFFF;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid #FFFFFF;
+    padding: 20px;
+    background-color: #FFFFFF;
+  }
+
+  &__title {
+    display: flex;
+    margin: 20px 0;
   }
 }

@@ -4,14 +4,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #102629;
+  background-color: rgb(21, 19, 18);
 
   &__wrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 60vw;
+    width: 50vw;
   }
 
   &__home {
