@@ -1,0 +1,21 @@
+.career {
+  position: relative;
+  width: 100%;
+
+  &__wrap {
+    width: 100%;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: start;
+    color: gray;
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 5;
+  }
+
+  &__highlight {
+    color: #FFFFFF;
+  }
+}

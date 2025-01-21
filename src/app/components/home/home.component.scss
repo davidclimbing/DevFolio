@@ -8,23 +8,31 @@
     width: 50vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 100px;
     color: rgb(21, 19, 18);
   }
 
-  &__profile-pane {
+  &__profile {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    position: relative;
+    position: sticky;
     border-radius: 30px;
     border: 1px solid #FFFFFF;
     padding: 20px;
     background-color: #FFFFFF;
+    margin-top: 80px;
   }
 
   &__title {
     display: flex;
     margin: 20px 0;
+  }
+
+  &__main-pane {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+
   }
 }
