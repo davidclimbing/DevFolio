@@ -1,11 +1,13 @@
+<app-header></app-header>
 <div class="game-container" [class.game-over]="isGameOver">
   <div class="score">Score: {{ score }}</div>
   <div class="dino" [style.bottom.px]="dinoBottom"></div>
   <div *ngFor="let obstacle of obstacles"
-       class="obstacle"
-       [style.left.px]="obstacle.position">
+       class="obstacle" [style.left.px]="obstacle.position">
+
   </div>
   <div *ngIf="isGameOver" class="game-over-text">
     Game Over! Press Space to restart
   </div>
 </div>
+<app-footer></app-footer>

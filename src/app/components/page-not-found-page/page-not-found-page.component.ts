@@ -1,11 +1,15 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
+import {HeaderComponent} from "../header/header.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-page-not-found-page',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './page-not-found-page.component.html',
   standalone: true,

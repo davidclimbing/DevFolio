@@ -4,23 +4,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #102629;
 
   &__wrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 60vw;
   }
 
   &__home {
     font-size: 32px;
     font-weight: bold;
+    color: #3950DD;
+    text-decoration: none;
   }
 
-  &__nav {
+  &__nav-wrap {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+  }
+
+  &__nav {
+    font-size: 1rem;
+    color: #3950DD;
+    text-decoration: none;
   }
 }

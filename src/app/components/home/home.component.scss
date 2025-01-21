@@ -1,0 +1,13 @@
+.home {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__wrap {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    color: #3950DD;
+  }
+}
