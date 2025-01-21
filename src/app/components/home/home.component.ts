@@ -17,6 +17,7 @@ import {SkillsComponent} from "../skills/skills.component";
     SkillsComponent
   ],
   templateUrl: './home.component.html',
+  standalone: true,
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {

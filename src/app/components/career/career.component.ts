@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-career',
   imports: [],
   templateUrl: './career.component.html',
+  standalone: true,
   styleUrl: './career.component.scss'
 })
 export class CareerComponent {
