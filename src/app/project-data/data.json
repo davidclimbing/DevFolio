@@ -1,0 +1,53 @@
+{
+  "projects": [
+    {
+      "title": "Insam AI",
+      "skills": [
+        "Python"
+      ],
+      "link": "https://insam.ai"
+    },
+    {
+      "title": "(주)7일 기업 홈페이지",
+      "skills": [
+        "TypeScript",
+        "Angular",
+        "Scss"
+      ],
+      "link": "https://7dayadvance.com"
+    },
+    {
+      "title": "LCK 아이드롭",
+      "skills": [
+        "TypeScript",
+        "Angular",
+        "Scss",
+        "Cloudtype"
+      ]
+    },
+    {
+      "title": "Breadcrumb",
+      "skills": [
+        "TypeScript",
+        "Angular",
+        "Scss"
+      ]
+    },
+    {
+      "title": "Todo APP",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Scss"
+      ]
+    },
+    {
+      "title": "Kanban Board",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Tailwind"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+.activities {
+
+
+  &__wrap {
+
+  }
+
+  &__title {
+    color: #FFFFFF;
+    font-size: 80px;
+    font-weight: 800;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__card {
+
+  }
+
+  &__activity-title {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  &__activity-description {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+}

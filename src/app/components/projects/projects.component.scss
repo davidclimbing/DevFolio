@@ -1,0 +1,52 @@
+.projects {
+  position: relative;
+
+  &__wrap {
+
+  }
+
+  &__title {
+    color: #FFFFFF;
+    font-size: 80px;
+    font-weight: 800;
+  }
+
+  &__content-wrap {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 40px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid #808080;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 15px;
+    gap: 20px;
+  }
+
+  &__card-title {
+    align-self: start;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(244, 108, 56);
+    font-weight: bold;
+
+    &--ko {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  }
+
+  &__skills {
+    align-self: start;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(197, 255, 65);
+  }
+}

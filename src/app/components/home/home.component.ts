@@ -5,6 +5,7 @@ import {AboutComponent} from "../about/about.component";
 import {ProjectsComponent} from "../projects/projects.component";
 import {CareerComponent} from "../career/career.component";
 import {SkillsComponent} from "../skills/skills.component";
+import {ActivitiesComponent} from "../activities/activities.component";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ import {SkillsComponent} from "../skills/skills.component";
     AboutComponent,
     ProjectsComponent,
     CareerComponent,
-    SkillsComponent
+    SkillsComponent,
+    ActivitiesComponent
   ],
   templateUrl: './home.component.html',
   standalone: true,
