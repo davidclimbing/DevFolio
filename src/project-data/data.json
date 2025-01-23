@@ -5,7 +5,10 @@
       "skills": [
         "Python"
       ],
-      "link": "https://insam.ai"
+      "link": {
+        "label": "link",
+        "url": "https://insam.ai"
+      }
     },
     {
       "title": "(주)7일 기업 홈페이지",
@@ -14,7 +17,16 @@
         "Angular",
         "Scss"
       ],
-      "link": "https://7dayadvance.com"
+      "links": [
+        {
+          "label": "link",
+          "url": "https://7dayadvance.com/ko_KR"
+        },
+        {
+          "label": "link(en)",
+          "url": "https://7dayadvance.com/en_US"
+        }
+      ]
     },
     {
       "title": "LCK 아이드롭",

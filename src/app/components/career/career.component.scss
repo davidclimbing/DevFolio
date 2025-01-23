@@ -46,12 +46,19 @@
     gap: 40px;
   }
 
-  &__image {
+  &__image-wrap {
     display: flex;
+    width: 100px;
     border-radius: 50%;
     padding: 30px;
-    border: 1px solid #808080;
+    border: 2px solid #808080;
     background-color: #FFFFFF;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   &__description {

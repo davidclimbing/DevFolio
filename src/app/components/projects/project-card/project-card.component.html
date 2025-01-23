@@ -1,0 +1,20 @@
+<div class="project-card">
+  <div class="project-card__wrap">
+    <div class="project-card__title">{{project?.title}}</div>
+    <div class="project-card__skills">{{project?.skills?.join(', ')}}</div>
+
+    @if (project?.links) {
+      <div class="project-card__link-wrap">
+        @for (link of project?.links; track link) {
+          <a [href]="link?.url" target="_blank" class="mr-2">{{link?.label}}</a>
+        }
+      </div>
+    }
+
+    @if (project?.link) {
+      <div class="project-card__link-wrap">
+        <a [href]="project?.link?.url" target="_blank" class="mr-2">{{project?.link?.label}}</a>
+      </div>
+    }
+  </div>
+</div>

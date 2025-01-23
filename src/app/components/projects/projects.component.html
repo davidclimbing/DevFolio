@@ -3,41 +3,10 @@
     <h1 class="projects__title">PROJECTS</h1>
 
     <div class="projects__content-wrap">
-      <div class="projects__card">
-        <div class="projects__card-title">Insam AI</div>
-        <div class="projects__skills">Python</div>
-        <a href="https://insam.ai" target="_blank">link</a>
-      </div>
 
-      <div class="projects__card">
-        <div class="projects__card-title projects__card-title--ko">(주) 7일 기업 홈페이지</div>
-        <div class="projects__skills">TypeScript, Angular, SCSS</div>
-
-        <div class="projects__links">
-          <a href="https://7dayadvance.com/en_US" target="_blank">link(ko)</a>
-          <a href="https://7dayadvance.com/ko_KR" target="_blank">link(en)</a>
-        </div>
-      </div>
-
-      <div class="projects__card">
-        <div class="projects__card-title">LCK 아이드롭</div>
-        <div class="projects__skills">Angular, TypeScript, SCSS, Cloudtype</div>
-      </div>
-
-      <div class="projects__card">
-        <div class="projects__card-title">Breadcrumb</div>
-        <div class="projects__skills">Angular, TypeScript, SCSS</div>
-      </div>
-
-      <div class="projects__card">
-        <div class="projects__card-title">TODO APP</div>
-        <div class="projects__skills">React, TypeScript, SCSS</div>
-      </div>
-
-      <div class="projects__card">
-        <div class="projects__card-title">KanbanMan</div>
-        <div class="projects__skills">React, TypeScript, Tailwind</div>
-      </div>
+      @for (project of projects; track project.title) {
+        <app-project-card [project]="project"></app-project-card>
+      }
     </div>
   </div>
 </div>
