@@ -1,19 +1,23 @@
 .career {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 
   &__wrap {
+    position: relative;
     width: 100%;
+    box-sizing: border-box;
   }
 
   &__header {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     color: #808080;
     font-size: 80px;
     font-weight: 800;
-    line-height: 0.4;
+    line-height: 80px;
   }
 
   &__highlight {
@@ -23,11 +27,6 @@
   &__plain {
     display: flex;
     justify-content: flex-end;
-    margin-right: -80px;
-  }
-
-  &__title {
-
   }
 
   &__content-wrap {

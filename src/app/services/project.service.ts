@@ -12,7 +12,7 @@ export class ProjectsService {
     return this.projects;
   }
 
-  getProject(page: number, pageSize: number) {
-    return this.projects.filter((project, index) => console.log(project, index, page, pageSize));
-  }
+  // getProject(page: number, pageSize: number) {
+  //   return this.projects.filter((project, index) => console.log(project, index, page, pageSize));
+  // }
 }

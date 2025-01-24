@@ -5,10 +5,34 @@
       "skills": [
         "Python"
       ],
-      "link": {
-        "label": "link",
-        "url": "https://insam.ai"
-      }
+      "link": "https://insam.ai",
+      "description": "한의사 및 한의대생을 위한 의사결정 지원 서비스",
+      "role": [
+        "사용자 인터페이스 개선"
+      ],
+      "result": [
+        "사용자 피드백을 반영한 UI/UX 리팩토링으로 사용성 20% 개선"
+      ]
+    },
+    {
+      "title": "HAVEST",
+      "skills": [
+        "Typescript",
+        "Angular",
+        "Scss"
+      ],
+      "link": "https://havest.kr",
+      "description": "의료 종사자를 위한 교육 플랫폼",
+      "role": [
+        "서비스 관리자 기능 개발",
+        "i18n, l10n 지원 개발",
+        "사용자 설정 시스템 개발",
+        "Carousel UI 최적화"
+      ],
+      "result": [
+        "사용자 피드백을 반영한 UI/UX 리팩토링으로 사용성 20% 개선"
+      ],
+      "gif": "dafd"
     },
     {
       "title": "(주)7일 기업 홈페이지",
@@ -17,15 +41,15 @@
         "Angular",
         "Scss"
       ],
-      "links": [
-        {
-          "label": "link",
-          "url": "https://7dayadvance.com/ko_KR"
-        },
-        {
-          "label": "link(en)",
-          "url": "https://7dayadvance.com/en_US"
-        }
+      "link": "https://7dayadvance.com",
+      "description": "기업 홈페이지",
+      "role": [
+        "반응형 디자인 구현",
+        "동적 컨텐츠 렌더링 구현",
+        "인터렉티브 애니메이션 구현"
+      ],
+      "result": [
+        "사용자 피드백을 반영한 UI/UX 리팩토링으로 사용성 20% 개선"
       ]
     },
     {
@@ -35,30 +59,6 @@
         "Angular",
         "Scss",
         "Cloudtype"
-      ]
-    },
-    {
-      "title": "Breadcrumb",
-      "skills": [
-        "TypeScript",
-        "Angular",
-        "Scss"
-      ]
-    },
-    {
-      "title": "Todo APP",
-      "skills": [
-        "TypeScript",
-        "React",
-        "Scss"
-      ]
-    },
-    {
-      "title": "Kanban Board",
-      "skills": [
-        "TypeScript",
-        "React",
-        "Tailwind"
       ]
     }
   ]
