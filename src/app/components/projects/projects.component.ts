@@ -40,23 +40,18 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     const dividedPageWidthPerPage = this.sectionWidth / this.pageSize;
 
     return {
-      'width': dividedPageWidthPerPage
+      'width': `${dividedPageWidthPerPage}px` || '0px'
     };
   }
 
   get numberOfShiftCards() {
-    const numberOfCurrentPage = this.currentPage;
-    let numberOfShiftCards = (this.currentPage - 1) * this.pageSize;
-    if (numberOfCurrentPage < this.projects?.length) numberOfShiftCards = 0;
-    return numberOfShiftCards;
+    return this.currentPage - 1;
   }
 
   get styleOfLeftShiftPercentOnSlide() {
-    // if return {'transform': 'translate(0, 0)'};
-    const percentPerCard = 100 / this.pageSize;
-    // const percentPerCard = new Fraction(100).div(this.perPageOfTop);
     return {
-      'transform': `translate(-${percentPerCard * this.numberOfShiftCards}%, 0)`
+      'transform': `translate(-${50 * this.numberOfShiftCards}%, 0)`, // 50%씩 이동 (2개 카드 기준)
+      'transition': 'transform 0.3s ease-in-out'
     };
   }
 
@@ -65,10 +60,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
-
     fromEvent(window, 'resize').pipe(
-      // 화면 사이즈 변화가 끝났을 때 이벤트만 받기 위해서 설정
       debounceTime(300)
     ).subscribe(() => {
       this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
@@ -76,10 +68,13 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
+    setTimeout(() => {
+      this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
+    }, 0)
   }
 
   moveNextPage() {
+    if (this.currentPage < this.projects.length)
     this.currentPage += 1;
   }
 

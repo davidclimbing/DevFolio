@@ -4,6 +4,7 @@ import {Project} from "../../../schemas/project";
 @Component({
   selector: 'app-project-card',
   imports: [],
+  standalone: true,
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss'
 })
