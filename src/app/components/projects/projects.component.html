@@ -7,7 +7,9 @@
         <button class="projects__arrow" (click)="movePreviousPage()">
           <span class="material-icons">chevron_left</span>
         </button>
-        <button class="projects__arrow projects__arrow--next" (click)="moveNextPage()">
+        <button class="projects__arrow projects__arrow--next"
+                *ngIf="pageSize * currentPage < projects.length"
+                (click)="moveNextPage()">
           <span class="material-icons">chevron_right</span>
         </button>
       </div>

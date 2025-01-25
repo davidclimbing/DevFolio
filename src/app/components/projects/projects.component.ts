@@ -3,24 +3,13 @@ import {ProjectsService} from "../../services/project.service";
 import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
-
-class ProjectLoader {
-  projects: Project[] = [];
-
-  constructor(page: number,
-              pageSize: number,
-              private projectService: ProjectsService) {
-  }
-
-  load() {
-
-  }
-}
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-projects',
   imports: [
-    ProjectCardComponent
+    ProjectCardComponent,
+    NgIf
   ],
   standalone: true,
   templateUrl: './projects.component.html',
@@ -31,8 +20,6 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   sectionWidth: number = 0;
   pageSize: number = 2;
   currentPage: number = 1;
-
-  isLoading: boolean = false;
 
   @ViewChild("slide") slide: ElementRef;
 
