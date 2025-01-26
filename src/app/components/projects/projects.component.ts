@@ -62,12 +62,12 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   moveNextPage() {
     if (this.currentPage < this.projects.length)
-    this.currentPage += 1;
+    this.currentPage += .5;
   }
 
   movePreviousPage() {
     if (this.currentPage > 1) {
-      this.currentPage -= 1;
+      this.currentPage -= .5;
     }
   }
 }
