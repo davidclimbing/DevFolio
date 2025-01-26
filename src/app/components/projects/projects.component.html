@@ -4,7 +4,9 @@
 
     <div class="projects__content-wrap" #slide>
       <div class="projects__arrow-wrap">
-        <button class="projects__arrow" (click)="movePreviousPage()">
+        <button class="projects__arrow"
+                *ngIf="currentPage > 1"
+                (click)="movePreviousPage()">
           <span class="material-icons">chevron_left</span>
         </button>
         <button class="projects__arrow projects__arrow--next"
