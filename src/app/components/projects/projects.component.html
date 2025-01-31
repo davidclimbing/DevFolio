@@ -15,7 +15,7 @@
           <span class="material-icons">chevron_right</span>
         </button>
       </div>
-      <div class="projects__card-wrap">
+      <div class="projects__card-wrap" *ngIf="loadingSignal()">
         <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
           @for (project of projects; track project.title) {
             <div [style]="computedWidthOfCard">
@@ -25,5 +25,8 @@
         </div>
       </div>
     </div>
+    <ng-template>
+
+    </ng-template>
   </div>
 </div>

@@ -12,6 +12,7 @@
     justify-content: space-between;
     align-items: center;
     width: 50vw;
+    position: relative;
   }
 
   &__home {
@@ -32,5 +33,82 @@
     font-size: 1rem;
     color: #FFFFFF;
     text-decoration: none;
+  }
+
+  &__hamburger {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 0;
+
+    &--active {
+
+      .header__line-1 {
+        transition: top 300ms ease-in-out, transform 300ms ease-in-out 300ms;
+        transform: rotate(-45deg);
+        top: 7px;
+      }
+
+      .header__line-2 {
+        opacity: 0;
+      }
+
+      .header__line-3 {
+        transition: bottom 300ms ease-in-out, transform 300ms ease-in-out 300ms;
+        transform: rotate(45deg);
+        bottom: 7px;
+      }
+    }
+  }
+
+  &__line-1 {
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    transition: transform 300ms ease-in-out, top 300ms ease-in-out 300ms;
+    top: 0;
+    transform: rotate(0);
+  }
+
+  &__line-2 {
+    margin-top: 5px;
+    width: 22px;
+    height: 2px;
+    background-color: white;
+  }
+
+  &__line-3 {
+    position: relative;
+    margin-top: 5px;
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    transition:  transform 300ms ease-in-out, bottom 300ms ease-in-out 300ms;
+    bottom: 0;
+    transform: rotate(0);
+  }
+
+  &--lg, &--md, &--sm, &--xs {
+    .header {
+      &__wrap {
+        width: 50vw;
+      }
+    }
+  }
+
+  &--md, &--sm {
+    .header {
+      &__wrap {
+        width: 80vw;
+      }
+    }
+  }
+
+  &--xs {
+
   }
 }

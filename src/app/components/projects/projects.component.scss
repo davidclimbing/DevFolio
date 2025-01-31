@@ -31,9 +31,12 @@
 
   &__arrow {
     position: absolute;
+    height: 100px;
     top: 0;
-    left: 0;
-    background-color: transparent;
+    left: 20px;
+    background-color: rgb(21, 19, 18);
+    opacity: .4;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
 
@@ -43,7 +46,7 @@
     }
 
     &--next {
-      right: 0;
+      right: 20px;
       left: unset;
     }
   }

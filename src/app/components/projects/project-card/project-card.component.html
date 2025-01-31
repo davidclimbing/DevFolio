@@ -18,14 +18,20 @@
           설명 : {{project?.description}}
         </div>
         <div class="project-card__role-wrap">
-          @for (role of project?.role; track role) {
-            <div class="project-card__role">{{role}}</div>
-          }
+          역할 :
+          <ol>
+            @for (role of project?.role; track role) {
+              <li class="project-card__role">{{role}}</li>
+            }
+          </ol>
         </div>
         <div class="project-card__result-wrap">
-          @for (result of project?.result; track result) {
-            <div class="project-card__result">{{result}}</div>
-          }
+          성과 :
+          <ol>
+            @for (result of project?.result; track result) {
+              <li class="project-card__result">{{result}}</li>
+            }
+          </ol>
         </div>
       </div>
     </div>

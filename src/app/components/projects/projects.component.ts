@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, signal, ViewChild, WritableSignal} from '@angular/core';
 import {ProjectsService} from "../../services/project.service";
 import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
@@ -21,6 +21,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   pageSize: number = 2;
   currentPage: number = 1;
 
+  loadingSignal: WritableSignal<boolean> = signal(false);
+
   @ViewChild("slide") slide: ElementRef;
 
   get computedWidthOfCard() {
@@ -37,7 +39,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   get styleOfLeftShiftPercentOnSlide() {
     return {
-      'transform': `translate(-${50 * this.numberOfShiftCards}%, 0)`, // 50%씩 이동 (2개 카드 기준)
+      'transform': `translate(-${50 * this.numberOfShiftCards}%, 0)`,
       'transition': 'transform 0.3s ease-in-out'
     };
   }
@@ -57,7 +59,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
-    }, 0)
+      this.loadingSignal.update(() => true);
+    }, 100)
   }
 
   moveNextPage() {

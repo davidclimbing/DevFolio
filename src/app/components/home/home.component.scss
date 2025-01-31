@@ -15,7 +15,7 @@
 
   &__profile-pane {
     flex-shrink: 0;
-    width: 330px;
+    width: 300px;
     display: block;
     box-sizing: border-box;
     padding-top: 80px;
@@ -45,5 +45,35 @@
     gap: 80px;
     flex: 1 0 0;
     overflow: hidden;
+  }
+
+  &--lg, &--md, &--sm, &--xs {
+    .home {
+      &__wrap {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      &__main-pane {
+        flex: unset;
+      }
+    }
+  }
+
+  &--sm {
+    .home {
+      &__wrap {
+        width: 80vw;
+      }
+    }
+  }
+
+  &--xs {
+    .home {
+      &__wrap {
+        width: 100vw;
+        padding: 0 40px;
+      }
+    }
   }
 }

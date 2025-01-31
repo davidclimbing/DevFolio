@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="home">
+<div class="home" [ngClass]="currentDevice ? 'home--' + currentDevice : ''">
   <div class="home__wrap">
     <div class="home__profile-pane">
       <div class="home__profile">

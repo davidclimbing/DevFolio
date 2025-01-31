@@ -7,6 +7,7 @@ import {CareerComponent} from "../career/career.component";
 import {SkillsComponent} from "../skills/skills.component";
 import {ActivitiesComponent} from "../activities/activities.component";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
     ProjectsComponent,
     CareerComponent,
     SkillsComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    NgClass
   ],
   templateUrl: './home.component.html',
   standalone: true,
