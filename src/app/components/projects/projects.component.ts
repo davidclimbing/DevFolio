@@ -4,12 +4,14 @@ import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
 import {NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-projects',
   imports: [
     ProjectCardComponent,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   standalone: true,
   templateUrl: './projects.component.html',

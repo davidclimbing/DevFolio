@@ -12,7 +12,7 @@
     background-color: #FFFFFF;
     padding: 40px;
     border-radius: 15px;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
   }
 
@@ -59,11 +59,23 @@
   }
 
   &__role-wrap {
-
+    ul {
+      padding-left: 15px;
+    }
   }
 
   &__role {
+    word-break: keep-all;
+  }
 
+  &__result-wrap {
+    ul {
+      padding-left: 15px;
+    }
+  }
+
+  &__result {
+    word-break: keep-all;
   }
 
   &__card {

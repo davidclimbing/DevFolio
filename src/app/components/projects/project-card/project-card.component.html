@@ -1,4 +1,4 @@
-<div class="project-card">
+<div class="project-card" (click)="openDetails()">
   <div class="project-card__wrap">
     <div class="project-card__title-wrap">
       <div class="project-card__title">
@@ -12,29 +12,31 @@
         }
       </div>
     </div>
+
     <div class="project-card__content-wrap">
-      <div class="project-card__content">
+      <div class="project-card__content" *ngIf="isOpened">
         <div class="project-card__description">
           설명 : {{project?.description}}
         </div>
         <div class="project-card__role-wrap">
           역할 :
-          <ol>
+          <ul>
             @for (role of project?.role; track role) {
               <li class="project-card__role">{{role}}</li>
             }
-          </ol>
+          </ul>
         </div>
         <div class="project-card__result-wrap">
           성과 :
-          <ol>
+          <ul>
             @for (result of project?.result; track result) {
               <li class="project-card__result">{{result}}</li>
             }
-          </ol>
+          </ul>
         </div>
       </div>
     </div>
+
     <div class="project-card__skills">{{project?.skills?.join(', ')}}</div>
   </div>
 </div>
