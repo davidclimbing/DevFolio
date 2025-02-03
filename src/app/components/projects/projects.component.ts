@@ -5,6 +5,8 @@ import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ProjectDetailsComponent} from "./project-details/project-details.component";
 
 @Component({
   selector: 'app-projects',
@@ -12,6 +14,10 @@ import {RouterLink} from '@angular/router';
     ProjectCardComponent,
     NgIf,
     RouterLink
+  ],
+  providers: [
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}}
   ],
   standalone: true,
   templateUrl: './projects.component.html',
@@ -40,13 +46,17 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   get styleOfLeftShiftPercentOnSlide() {
+    const shiftingPercentage = 100 / this.projects.length;
+
     return {
-      'transform': `translate(-${50 * this.numberOfShiftCards}%, 0)`,
+      'transform': `translate(-${shiftingPercentage * this.numberOfShiftCards}%, 0)`,
       'transition': 'transform 0.3s ease-in-out'
     };
   }
 
-  constructor(private projectsService: ProjectsService) {
+  constructor(private projectsService: ProjectsService,
+              private dialog: MatDialog,
+              private dialogRef: MatDialogRef<ProjectDetailsComponent>,) {
     this.projects = this.projectsService.getProjects();
   }
 
@@ -65,14 +75,21 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     }, 100)
   }
 
+  onOpenProjectDetails(project: Project) {
+    this.dialogRef = this.dialog.open(ProjectDetailsComponent, {
+      data: project,
+    })
+  }
+
   moveNextPage() {
-    if (this.currentPage < this.projects.length)
-    this.currentPage += .5;
+    if (this.currentPage < this.projects.length) {
+      this.currentPage += 1;
+    }
   }
 
   movePreviousPage() {
     if (this.currentPage > 1) {
-      this.currentPage -= .5;
+      this.currentPage -= 1;
     }
   }
 }

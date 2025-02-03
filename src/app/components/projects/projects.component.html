@@ -10,7 +10,7 @@
           <span class="material-icons">chevron_left</span>
         </button>
         <button class="projects__arrow projects__arrow--next"
-                *ngIf="pageSize * currentPage < projects.length"
+                *ngIf="currentPage + 1 < projects.length"
                 (click)="moveNextPage()">
           <span class="material-icons">chevron_right</span>
         </button>
@@ -18,7 +18,7 @@
       <div class="projects__card-wrap" *ngIf="loadingSignal()">
         <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
           @for (project of projects; track project.title) {
-            <div [style]="computedWidthOfCard">
+            <div [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
               <app-project-card [project]="project"></app-project-card>
             </div>
           }

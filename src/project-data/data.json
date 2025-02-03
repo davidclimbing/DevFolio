@@ -13,7 +13,8 @@
       "result": [
         "사용자 피드백을 반영한 UI/UX 리팩토링으로 사용성 20% 개선"
       ],
-      "id": "insam"
+      "id": "insam",
+      "logo": "/assets/insam_logo.png"
     },
     {
       "title": "HAVEST",
@@ -35,7 +36,8 @@
         "목적별 서비스 관리자 기능 구현에 평균 1스프린트가 소요되었으나 이후 0.5스프린트 정도 작업 공수가 줄어듬"
       ],
       "gif": "dafd",
-      "id": "havest"
+      "id": "havest",
+      "logo": "/assets/havest_logo.png"
     },
     {
       "title": "(주)7일 기업 홈페이지",
@@ -55,7 +57,8 @@
         "동적 컨텐츠 렌더링을 통한 웹사이트 유지보수성 향상",
         "일관된 다국어 및 날짜 표시 형식 제공"
       ],
-      "id": "7days"
+      "id": "7days",
+      "logo": "/assets/7days-logo.png"
     },
     {
       "title": "LCK 아이드롭",

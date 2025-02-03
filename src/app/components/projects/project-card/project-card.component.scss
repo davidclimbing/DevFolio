@@ -3,6 +3,14 @@
   width: 100%;
   padding: 0 10px;
   box-sizing: border-box;
+  cursor: pointer;
+  top: 0;
+  transition: top ease-in 200ms;
+  box-shadow: 0 2px 4px -2px;
+
+  &:hover {
+    top: -10px;
+  }
 
   &__wrap {
     display: flex;
@@ -14,6 +22,17 @@
     border-radius: 15px;
     gap: 10px;
     width: 100%;
+  }
+
+  &__logo-wrap {
+    width: 50px;
+    background-color: black;
+  }
+
+  &__logo {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
   }
 
   &__title-wrap {

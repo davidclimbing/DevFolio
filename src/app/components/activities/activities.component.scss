@@ -6,9 +6,15 @@
   }
 
   &__title {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: start;
     color: #FFFFFF;
     font-size: 80px;
     font-weight: 800;
+    line-height: 80px;
+    text-decoration: none;
+    padding-bottom: 40px;
   }
 
   &__content {
@@ -23,11 +29,17 @@
     color: #FFFFFF;
     font-size: 20px;
     font-family: 'Noto Sans KR', sans-serif;
+
+    span {
+      color: #808080;
+      font-size: 1rem;
+    }
   }
 
   &__activity-description {
     color: #FFFFFF;
     font-size: 1rem;
     font-family: 'Noto Sans KR', sans-serif;
+    padding-left: 15px;
   }
 }

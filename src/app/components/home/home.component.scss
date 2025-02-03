@@ -54,6 +54,10 @@
         justify-content: center;
       }
 
+      &__profile-pane {
+        margin: 0 auto;
+      }
+
       &__main-pane {
         flex: unset;
       }

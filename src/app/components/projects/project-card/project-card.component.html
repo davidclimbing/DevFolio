@@ -1,39 +1,8 @@
-<div class="project-card" (click)="openDetails()">
+<div class="project-card">
   <div class="project-card__wrap">
     <div class="project-card__title-wrap">
       <div class="project-card__title">
         {{project?.title}}
-        @if (project?.link) {
-          <div class="project-card__link-wrap">
-            <a class="project-card__link" [href]="project?.link" target="_blank">
-              <span class="material-icons">open_in_new</span>
-            </a>
-          </div>
-        }
-      </div>
-    </div>
-
-    <div class="project-card__content-wrap">
-      <div class="project-card__content" *ngIf="isOpened">
-        <div class="project-card__description">
-          설명 : {{project?.description}}
-        </div>
-        <div class="project-card__role-wrap">
-          역할 :
-          <ul>
-            @for (role of project?.role; track role) {
-              <li class="project-card__role">{{role}}</li>
-            }
-          </ul>
-        </div>
-        <div class="project-card__result-wrap">
-          성과 :
-          <ul>
-            @for (result of project?.result; track result) {
-              <li class="project-card__result">{{result}}</li>
-            }
-          </ul>
-        </div>
       </div>
     </div>
 
