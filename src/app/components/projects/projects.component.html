@@ -15,12 +15,18 @@
           <span class="material-icons">chevron_right</span>
         </button>
       </div>
-      <div class="projects__card-wrap" *ngIf="loadingSignal()">
+      <div class="projects__card-wrap">
         <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
-          @for (project of projects; track project.title) {
-            <div [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
-              <app-project-card [project]="project"></app-project-card>
-            </div>
+          @if (loadingSignal()) {
+            @for (project of projects; track project.title) {
+              <div [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
+                <app-project-card [project]="project"></app-project-card>
+              </div>
+            }
+          } @else {
+            @for (project of projects; track project.title) {
+              <div class="projects__mockup-cards" [style]="computedWidthOfCard"></div>
+            }
           }
         </div>
       </div>

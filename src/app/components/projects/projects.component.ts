@@ -72,7 +72,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
       this.loadingSignal.update(() => true);
-    }, 100)
+    }, 200)
   }
 
   onOpenProjectDetails(project: Project) {

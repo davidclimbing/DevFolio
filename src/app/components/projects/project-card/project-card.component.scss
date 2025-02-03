@@ -6,7 +6,6 @@
   cursor: pointer;
   top: 0;
   transition: top ease-in 200ms;
-  box-shadow: 0 2px 4px -2px;
 
   &:hover {
     top: -10px;
@@ -16,12 +15,17 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    border: 1px solid #808080;
     background-color: #FFFFFF;
     padding: 40px;
     border-radius: 15px;
     gap: 10px;
     width: 100%;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.80);
+    transition: box-shadow ease 400ms;
+
+    &:hover {
+      box-shadow: 0 0 1px 4px rgb(197, 255, 65), 0 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 2px 0 rgb(0 0 0 / 12%);
+    }
   }
 
   &__logo-wrap {

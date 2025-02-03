@@ -60,7 +60,47 @@
     box-sizing: border-box;
   }
 
-  &__description {
+  &__information-wrap {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__epic-wrap {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    gap: 5px;
+    padding-bottom: 20px;
+
+    & + .career__epic-wrap {
+      border-top: 1px solid #808080;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__epic-title {
+    font-size: 20px;
+    margin-top: 20px;
+    padding-left: 10px;
+    border-left: 2px solid #FFFFFF;
+    color: #FFFFFF;
+  }
+
+  &__epic-period {
+    color: #808080;
+  }
+
+  &__epic-description {
 
   }
 
