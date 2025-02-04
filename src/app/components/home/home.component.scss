@@ -47,7 +47,15 @@
     overflow: hidden;
   }
 
-  &--lg, &--md, &--sm, &--xs {
+  &--lg {
+    .home {
+      &__wrap {
+        width: 70vw;
+      }
+    }
+  }
+
+  &--md, &--sm, &--xs {
     .home {
       &__wrap {
         flex-direction: column;

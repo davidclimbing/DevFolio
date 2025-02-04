@@ -2,12 +2,12 @@
   <div class="header__wrap">
     <a class="header__home" routerLink="/">DavidClimbing</a>
 
-    <nav class="header__nav-wrap" *ngIf="!isMobile">
-      <a class="header__nav" href="#Career">Career</a>
-      <a class="header__nav" href="#projects">Projects</a>
-      <a class="header__nav" href="#skills">Skills</a>
-      <a class="header__nav" href="#activity">Activity</a>
-    </nav>
+    @if (!isMobile) {
+      <nav class="header__nav-wrap">
+        <a class="header__nav" [routerLink]="['/', 'projects']">Projects</a>
+        <a class="header__nav" [routerLink]="['/', 'about']">About</a>
+      </nav>
+    }
 
     <button *ngIf="isMobile" class="header__hamburger" [ngClass]="{'header__hamburger--active': toggleVerticalMenu}" type="button" (click)="toggleVerticalMenuBar()">
       <div class="header__line-1"></div>
@@ -15,4 +15,13 @@
       <div class="header__line-3"></div>
     </button>
   </div>
+
+  @if (isCollapsed) {
+    <div class="header__mobile-nav-wrap">
+      <nav class="header__mobile-nav">
+        <a class="header__nav" [routerLink]="['/', 'projects']">Projects</a>
+        <a class="header__nav" [routerLink]="['/', 'about']">About</a>
+      </nav>
+    </div>
+  }
 </div>

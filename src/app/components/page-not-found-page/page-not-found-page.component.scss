@@ -1,8 +1,10 @@
 .game-container {
   position: relative;
-  width: 100%;
+  width: 60%;
   height: 200px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid #FFFFFF;
+  padding-top: 80px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -25,8 +27,9 @@
 
 .score {
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 20px;
+  color: #FFFFFF;
 }
 
 .game-over-text {

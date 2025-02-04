@@ -1,5 +1,5 @@
 <section class="projects">
-  <div class="projects__wrap">
+  <div class="projects__wrap" [ngClass]="isExpanded ? 'projects__wrap--expanded' : ''">
     <a class="projects__title" [routerLink]="['/', 'projects']">PROJECTS</a>
 
     <div class="projects__content-wrap" #slide>
