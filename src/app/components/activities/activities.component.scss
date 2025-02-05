@@ -56,4 +56,12 @@
     text-decoration: none;
     color: #FFFFFF;
   }
+
+  &--sm, &--xs {
+    .activities {
+      &__title {
+        font-size: 60px;
+      }
+    }
+  }
 }

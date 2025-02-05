@@ -3,16 +3,16 @@ import {ProjectsService} from "../../services/project.service";
 import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
-import {NgClass, NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {NgClass} from '@angular/common';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ProjectDetailsComponent} from "./project-details/project-details.component";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-projects',
   imports: [
     ProjectCardComponent,
-    NgIf,
     RouterLink,
     NgClass
   ],
@@ -35,6 +35,15 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   loadingSignal: WritableSignal<boolean> = signal(false);
 
   @ViewChild("slide") slide: ElementRef;
+
+  currentDevice: string | null = null;
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'xs'],
+    [Breakpoints.Small, 'sm'],
+    [Breakpoints.Medium, 'md'],
+    [Breakpoints.Large, 'lg'],
+    [Breakpoints.XLarge, 'xl'],
+  ]);
 
   get computedWidthOfCard() {
     const dividedPageWidthPerPage = this.sectionWidth / this.pageSize;
@@ -59,7 +68,25 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   constructor(private projectsService: ProjectsService,
               private dialog: MatDialog,
-              private dialogRef: MatDialogRef<ProjectDetailsComponent>,) {
+              private dialogRef: MatDialogRef<ProjectDetailsComponent>,
+              private route: ActivatedRoute,
+              private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .subscribe(result => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentDevice = this.displayNameMap.get(query);
+          }
+        }
+      });
+
     this.projects = this.projectsService.getProjects();
   }
 

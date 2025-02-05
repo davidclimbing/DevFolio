@@ -82,4 +82,78 @@
     font-size: 20px;
     border-bottom: 1px solid #808080;
   }
+
+  &__project-wrap {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    gap: 5px;
+    padding-bottom: 20px;
+
+    & + .career__project-wrap {
+      border-top: 1px solid #808080;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__project {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 10px;
+  }
+
+  &__project-title {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-top: 20px;
+    padding-left: 10px;
+    border-left: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    gap: 10px;
+  }
+
+  &__project-period {
+    display: flex;
+    align-items: center;
+    color: #808080;
+    font-size: 1rem;
+  }
+
+  &__project-description-wrap {
+    margin: 0;
+    padding-left: 15px;
+  }
+
+  &__project-skills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__project-skill {
+    padding: 5px 10px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+  }
+
+  &--sm, &--xs {
+    .career {
+      &__title {
+        font-size: 60px;
+      }
+
+      &__project-title {
+        flex-direction: column;
+        gap: unset;
+      }
+    }
+  }
 }

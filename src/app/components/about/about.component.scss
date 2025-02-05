@@ -93,4 +93,12 @@
     align-items: center;
     text-decoration: none;
   }
+
+  &--sm, &--xs {
+    .about {
+      &__title {
+        font-size: 60px;
+      }
+    }
+  }
 }

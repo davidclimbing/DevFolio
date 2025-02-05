@@ -125,6 +125,14 @@
     }
   }
 
+  &__skills-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 10px;
+  }
+
   &__skills {
     align-self: start;
     font-size: 16px;

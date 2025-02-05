@@ -1,4 +1,4 @@
-<section class="career">
+<section class="career" [ngClass]="currentDevice ? 'career--' + currentDevice : ''">
   <div class="career__wrap">
     <div class="career__title">CAREER</div>
     <div class="career__content-wrap">
@@ -13,17 +13,45 @@
           </div>
 
           <div class="career__project-wrap">
-            <div>
-
+            <div class="career__project">
+              <div class="career__project-title">인삼 AI
+                <span class="career__project-period">2024년 11월 ~ 2024년 12월 (2명)</span>
+              </div>
+              <ul class="career__project-description-wrap">
+                <li>Streamlit을 활용한 CDSS 화면 개발</li>
+              </ul>
+              <div class="career__project-skills">
+                <code class="career__project-skill">Python</code>
+                <code class="career__project-skill">Streamlit</code>
+              </div>
             </div>
-          </div>
 
-          <div class="career__project-wrap">
+            <div class="career__project">
+              <div class="career__project-title">HAVEST (전문의료인 대상 교육 플랫폼 서비스)
+                <div class="career__project-period">2023년 2월 ~ 운영 중 (5명)</div>
+              </div>
+              <ul class="career__project-description-wrap">
+                <li>서비스 성능 최적화 및 유지보수, 사내 어드민 페이지 개발</li>
+              </ul>
+              <div class="career__project-skills">
+                <code class="career__project-skill">Angular</code>
+                <code class="career__project-skill">Scss</code>
+                <code class="career__project-skill">Vite</code>
+              </div>
+            </div>
 
-          </div>
-
-          <div class="career__project-wrap">
-
+            <div class="career__project">
+              <div class="career__project-title">기업 홈페이지 개발
+                <div class="career__project-period">2023년 1월 ~ 2023년 2월 (개인)</div>
+              </div>
+              <ul class="career__project-description-wrap">
+                <li>JSON 데이터 기반 컨텐츠 관리 시스템 구축 및 개발, 인터렉티브 애니메이션 구현</li>
+              </ul>
+              <div class="career__project-skills">
+                <code class="career__project-skill">Angular</code>
+                <code class="career__project-skill">Scss</code>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NgClass, NgIf} from '@angular/common';
+import {debounceTime, fromEvent} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ import {NgClass, NgIf} from '@angular/common';
   standalone: true,
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isCollapsed: boolean = false;
   toggleVerticalMenu: boolean = false;
 
@@ -47,6 +48,15 @@ export class HeaderComponent {
           }
         }
       });
+  }
+
+  ngOnInit() {
+    fromEvent(window, 'resize').pipe(
+      debounceTime(0)
+    ).subscribe(() => {
+      this.isCollapsed = false;
+      this.toggleVerticalMenu = false;
+    });
   }
 
   toggleVerticalMenuBar() {

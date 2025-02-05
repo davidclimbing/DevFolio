@@ -1,24 +1,26 @@
-<section class="projects">
+<section class="projects" [ngClass]="currentDevice ? 'projects--' + currentDevice : ''">
   <div class="projects__wrap" [ngClass]="isExpanded ? 'projects__wrap--expanded' : ''">
     <a class="projects__title" [routerLink]="['/', 'projects']">PROJECTS</a>
 
     <div class="projects__content-wrap" #slide>
-      <div class="projects__arrow-wrap">
-        <button class="projects__arrow"
-                *ngIf="currentPage > 1"
-                (click)="movePreviousPage()">
-          <span class="material-icons">chevron_left</span>
-        </button>
-        <button class="projects__arrow projects__arrow--next"
-                *ngIf="currentPage + 1 < projects.length"
-                (click)="moveNextPage()">
-          <span class="material-icons">chevron_right</span>
-        </button>
-      </div>
+      @if (!isExpanded) {
+        <div class="projects__arrow-wrap">
+          <button class="projects__arrow"
+                  [disabled]="!(currentPage > 1)"
+                  (click)="movePreviousPage()">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button class="projects__arrow projects__arrow--next"
+                  [disabled]="!(currentPage + 1 < projects?.length)"
+                  (click)="moveNextPage()">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+      }
       <div class="projects__card-wrap">
         @if (isExpanded) {
           @for (project of projects; track project.title) {
-            <div (click)="onOpenProjectDetails(project)">
+            <div class="projects__cards" (click)="onOpenProjectDetails(project)">
               <app-project-card [project]="project"></app-project-card>
             </div>
           }

@@ -23,9 +23,11 @@
     background-color: #FFFFFF;
     border-radius: 15px;
     margin-top: 40px;
+    margin-left: 10px;
     padding: 40px;
     align-self: start;
     flex-shrink: 0;
+    gap: 10px;
   }
 
   &__languages {
@@ -35,10 +37,31 @@
     gap: 20px;
   }
 
-  &__language-icon-wrap {
+  &__language-label {
+    width: 220px;
+    display: flex;
+    flex-shrink: 0;
   }
 
-  &__language-icon {
+  &__language-name-wrap {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
 
+  &__language-name {
+    border: 1px solid #808080;
+    border-radius: 10px;
+    padding: 5px 10px;
+  }
+
+  &--sm, &--xs {
+    .skills {
+      &__title {
+        font-size: 60px;
+      }
+    }
   }
 }

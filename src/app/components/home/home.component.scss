@@ -6,7 +6,7 @@
 
   &__wrap {
     position: relative;
-    width: 50vw;
+    width: 60rem;
     display: flex;
     flex-direction: row;
     gap: 150px;
@@ -53,7 +53,7 @@
     }
   }
 
-  &--sm {
+  &--md, &--sm {
     .home {
       &__wrap {
         width: 80vw;

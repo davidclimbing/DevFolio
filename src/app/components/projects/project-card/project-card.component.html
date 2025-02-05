@@ -6,6 +6,10 @@
       </div>
     </div>
 
-    <div class="project-card__skills">{{project?.skills?.join(', ')}}</div>
+    <div class="project-card__skills-wrap">
+      @for (skill of project?.skills; track skill) {
+        <code class="project-card__skills">{{skill}}</code>
+      }
+    </div>
   </div>
 </div>
