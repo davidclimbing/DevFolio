@@ -15,6 +15,7 @@ import {NgClass, NgIf} from '@angular/common';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  isCollapsed: boolean = false;
   toggleVerticalMenu: boolean = false;
 
   currentDevice: string | null = null;
@@ -50,5 +51,6 @@ export class HeaderComponent {
 
   toggleVerticalMenuBar() {
     this.toggleVerticalMenu = !this.toggleVerticalMenu;
+    this.isCollapsed = !this.isCollapsed;
   }
 }

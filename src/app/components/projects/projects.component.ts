@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, ElementRef, OnInit, signal, ViewChild, WritableSignal} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, signal, ViewChild, WritableSignal} from '@angular/core';
 import {ProjectsService} from "../../services/project.service";
 import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ProjectDetailsComponent} from "./project-details/project-details.component";
@@ -13,7 +13,8 @@ import {ProjectDetailsComponent} from "./project-details/project-details.compone
   imports: [
     ProjectCardComponent,
     NgIf,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   providers: [
     {provide: MAT_DIALOG_DATA, useValue: {}},
@@ -24,6 +25,8 @@ import {ProjectDetailsComponent} from "./project-details/project-details.compone
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
+  @Input() isExpanded = true;
+
   projects: Project[] = [];
   sectionWidth: number = 0;
   pageSize: number = 2;

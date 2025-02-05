@@ -1,5 +1,5 @@
 <section class="projects">
-  <div class="projects__wrap">
+  <div class="projects__wrap" [ngClass]="isExpanded ? 'projects__wrap--expanded' : ''">
     <a class="projects__title" [routerLink]="['/', 'projects']">PROJECTS</a>
 
     <div class="projects__content-wrap" #slide>
@@ -16,19 +16,27 @@
         </button>
       </div>
       <div class="projects__card-wrap">
-        <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
-          @if (loadingSignal()) {
-            @for (project of projects; track project.title) {
-              <div [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
-                <app-project-card [project]="project"></app-project-card>
-              </div>
-            }
-          } @else {
-            @for (project of projects; track project.title) {
-              <div class="projects__mockup-cards" [style]="computedWidthOfCard"></div>
-            }
+        @if (isExpanded) {
+          @for (project of projects; track project.title) {
+            <div (click)="onOpenProjectDetails(project)">
+              <app-project-card [project]="project"></app-project-card>
+            </div>
           }
-        </div>
+        } @else {
+          <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
+            @if (loadingSignal()) {
+              @for (project of projects; track project.title) {
+                <div [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
+                  <app-project-card [project]="project"></app-project-card>
+                </div>
+              }
+            } @else {
+              @for (project of projects; track project.title) {
+                <div class="projects__mockup-cards" [style]="computedWidthOfCard"></div>
+              }
+            }
+          </div>
+        }
       </div>
     </div>
     <ng-template>

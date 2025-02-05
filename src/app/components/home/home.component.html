@@ -1,16 +1,16 @@
 <div class="home" [ngClass]="currentDevice ? 'home--' + currentDevice : ''">
   <div class="home__wrap">
-    <div class="home__profile-pane">
-      <div class="home__profile">
-        <app-about></app-about>
-      </div>
-    </div>
-
+<!--    <div class="home__profile-pane">-->
+<!--      <div class="home__profile">-->
+<!--        <app-about></app-about>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="home__main-pane">
-      <app-career id="career"></app-career>
-      <app-projects id="projects"></app-projects>
-      <app-skills id="skills"></app-skills>
-      <app-activities id="activity"></app-activities>
+      <app-about></app-about>
+      <app-career></app-career>
+      <app-projects [isExpanded]="false"></app-projects>
+      <app-skills></app-skills>
+      <app-activities></app-activities>
     </div>
   </div>
 </div>

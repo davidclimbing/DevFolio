@@ -8,4 +8,5 @@ export interface Project {
   role?: string[];
   result?: string[];
   gif?: string;
+  code?: string[];
 }

@@ -11,26 +11,7 @@
     flex-direction: row;
     gap: 150px;
     color: rgb(21, 19, 18);
-  }
-
-  &__profile-pane {
-    flex-shrink: 0;
-    width: 300px;
-    display: block;
-    box-sizing: border-box;
     padding-top: 80px;
-  }
-
-  &__profile {
-    position: sticky;
-    top: 80px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    border-radius: 30px;
-    border: 1px solid #FFFFFF;
-    padding: 20px;
-    background-color: #FFFFFF;
   }
 
   &__title {
@@ -47,7 +28,15 @@
     overflow: hidden;
   }
 
-  &--lg, &--md, &--sm, &--xs {
+  &--lg {
+    .home {
+      &__wrap {
+        width: 70vw;
+      }
+    }
+  }
+
+  &--md, &--sm, &--xs {
     .home {
       &__wrap {
         flex-direction: column;

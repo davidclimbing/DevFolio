@@ -14,7 +14,8 @@
         "사용자 피드백을 반영한 UI/UX 리팩토링으로 사용성 20% 개선"
       ],
       "id": "insam",
-      "logo": "/assets/insam_logo.png"
+      "logo": "/assets/insam_logo.png",
+      "code": [""]
     },
     {
       "title": "HAVEST",
