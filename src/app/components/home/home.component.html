@@ -1,7 +1,7 @@
 <div class="home" [ngClass]="currentDevice ? 'home--' + currentDevice : ''">
   <div class="home__wrap">
     <div class="home__main-pane">
-      <app-about></app-about>
+      <app-about [isExpanded]="false"></app-about>
       <app-career></app-career>
       <app-projects [isExpanded]="false"></app-projects>
       <app-skills></app-skills>

@@ -26,6 +26,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
   @Input() isExpanded = true;
+  @ViewChild("slide") slide: ElementRef;
 
   projects: Project[] = [];
   sectionWidth: number = 0;
@@ -33,8 +34,6 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   currentPage: number = 1;
 
   loadingSignal: WritableSignal<boolean> = signal(false);
-
-  @ViewChild("slide") slide: ElementRef;
 
   currentDevice: string | null = null;
   displayNameMap = new Map([

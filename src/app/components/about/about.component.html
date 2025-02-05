@@ -1,5 +1,5 @@
 <section class="about" [ngClass]="currentDevice ? 'about--' + currentDevice : ''">
-  <div class="about__wrap">
+  <div class="about__wrap" [ngClass]="isExpanded ? 'about__wrap--expanded' : ''">
     <div class="about__title">ABOUT</div>
     <div class="about__details-wrap">
       <div class="about__row-wrap">

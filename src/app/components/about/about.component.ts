@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
@@ -12,6 +12,8 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
+  @Input() isExpanded: boolean = true;
+
   currentDevice: string | null = null;
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'xs'],

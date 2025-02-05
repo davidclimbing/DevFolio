@@ -8,6 +8,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &--expanded {
+      width: 100%;
+
+      .about__row-wrap {
+        margin: 0 auto;
+      }
+    }
   }
 
   &__details-wrap {
