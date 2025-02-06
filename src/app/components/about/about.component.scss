@@ -12,7 +12,7 @@
     &--expanded {
       width: 100%;
 
-      .about__row-wrap {
+      .about__content-wrap {
         margin: 0 auto;
       }
     }
@@ -25,7 +25,7 @@
     position: relative;
   }
 
-  &__row-wrap {
+  &__content-wrap {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -42,6 +42,7 @@
     line-height: 80px;
     text-decoration: none;
     padding-bottom: 40px;
+    margin: 0;
   }
 
   &__profile-wrap {
@@ -107,6 +108,26 @@
       &__title {
         font-size: 60px;
       }
+    }
+  }
+
+  &--xs {
+    .about__title {
+      align-items: center;
+    }
+
+    .about__name {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about__content-wrap {
+      flex-direction: column;
+    }
+
+    .about__profile-wrap {
+      margin: 0 auto;
     }
   }
 }

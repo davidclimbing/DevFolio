@@ -35,7 +35,8 @@
     font-weight: 800;
     line-height: 80px;
     text-decoration: none;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
+    margin: 0;
 
     &:hover {
       color: #FFFFFF;
@@ -176,6 +177,17 @@
       &__title {
         font-size: 60px;
       }
+    }
+  }
+
+  &--xs {
+    .projects__wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .projects__title {
+      align-items: center;
     }
   }
 }

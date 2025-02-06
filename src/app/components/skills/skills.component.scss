@@ -15,6 +15,8 @@
     font-weight: 800;
     line-height: 80px;
     text-decoration: none;
+    margin: 0;
+    padding-bottom: 40px;
   }
 
   &__content-wrap {
@@ -22,7 +24,6 @@
     flex-direction: column;
     background-color: #FFFFFF;
     border-radius: 15px;
-    margin-top: 40px;
     margin-left: 10px;
     padding: 40px;
     align-self: start;
@@ -58,10 +59,28 @@
   }
 
   &--sm, &--xs {
-    .skills {
-      &__title {
-        font-size: 60px;
-      }
+    .skills__title {
+      font-size: 60px;
+    }
+
+    .skills__languages {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skills__language-label {
+      width: 100%;
+    }
+  }
+
+  &--xs {
+    .skills__title {
+      align-items: center;
+    }
+
+    .skills__content-wrap {
+      margin: 0 auto;
+      padding: 20px;
     }
   }
 }

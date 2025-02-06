@@ -1,6 +1,6 @@
 <div class="skills" [ngClass]="currentDevice ? 'skills--' + currentDevice : ''">
   <div class="skills__wrap">
-    <div class="skills__title">SKILLS</div>
+    <h2 class="skills__title">SKILLS</h2>
 
     <div class="skills__content-wrap">
       <div class="skills__languages">
@@ -27,7 +27,9 @@
         <div class="skills__language-label">
           Database
         </div>
-        <code class="skills__language-name">MySQL</code>
+        <div class="skills__language-name-wrap">
+          <code class="skills__language-name">MySQL</code>
+        </div>
       </div>
 
       <div class="skills__languages">

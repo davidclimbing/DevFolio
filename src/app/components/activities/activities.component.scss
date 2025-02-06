@@ -1,8 +1,11 @@
 .activities {
-
+  position: relative;
+  width: 100%;
 
   &__wrap {
-
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
   }
 
   &__title {
@@ -15,6 +18,7 @@
     line-height: 80px;
     text-decoration: none;
     padding-bottom: 40px;
+    margin: 0;
   }
 
   &__content {
@@ -58,10 +62,18 @@
   }
 
   &--sm, &--xs {
-    .activities {
-      &__title {
-        font-size: 60px;
-      }
+    .activities__title {
+      font-size: 60px;
+    }
+  }
+
+  &--xs {
+    .activities__title {
+      align-items: center;
+    }
+
+    .activities__card {
+      margin: 0 auto;
     }
   }
 }
