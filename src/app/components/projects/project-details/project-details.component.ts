@@ -19,8 +19,7 @@ export class ProjectDetailsComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Project,
               private route: ActivatedRoute) {
-    this.route.data.subscribe((resp) => {
-      // this.htmlTitle.setTitle('Davidclimbing\'s Project ' + this.data.id);
+    this.route.data.subscribe((_) => {
       this.project = this.data
     })
   }
