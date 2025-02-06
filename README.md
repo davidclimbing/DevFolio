@@ -1,3 +1,3 @@
 # Devfolio
 
-Personal Portfolio For Developers
+Personal Portfolio
