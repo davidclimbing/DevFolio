@@ -65,12 +65,16 @@
 
   &__arrow {
     position: relative;
-    height: 100%;
     background-color: rgb(21, 19, 18);
     border-radius: 50%;
     border: 3px solid #FFFFFF;
     cursor: pointer;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
 
     span {
       font-size: 40px;
