@@ -65,6 +65,10 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     };
   }
 
+  get isMobile() {
+    return this.currentDevice === 'xs';
+  }
+
   constructor(private projectsService: ProjectsService,
               private dialog: MatDialog,
               private dialogRef: MatDialogRef<ProjectDetailsComponent>,

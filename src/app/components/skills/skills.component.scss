@@ -1,86 +1,100 @@
-.skills {
-  position: relative;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__wrap {
-    display: flex;
-    flex-direction: column;
-  }
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
 
-  &__title {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: start;
-    color: #FFFFFF;
-    font-size: 80px;
-    font-weight: 800;
-    line-height: 80px;
-    text-decoration: none;
-    margin: 0;
-    padding-bottom: 40px;
-  }
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
 
-  &__content-wrap {
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-    border-radius: 15px;
-    margin-left: 10px;
-    padding: 40px;
-    align-self: start;
-    flex-shrink: 0;
-    gap: 10px;
-  }
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
 
-  &__languages {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    gap: 20px;
-  }
+  .skills {
+    position: relative;
 
-  &__language-label {
-    width: 220px;
-    display: flex;
-    flex-shrink: 0;
-  }
-
-  &__language-name-wrap {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  &__language-name {
-    border: 1px solid #808080;
-    border-radius: 10px;
-    padding: 5px 10px;
-  }
-
-  &--sm, &--xs {
-    .skills__title {
-      font-size: 60px;
+    &__wrap {
+      display: flex;
+      flex-direction: column;
     }
 
-    .skills__languages {
+    &__title {
+      display: inline-flex;
       flex-direction: column;
+      justify-content: start;
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 80px;
+      text-decoration: none;
+      margin: 0;
+      padding-bottom: 40px;
+    }
+
+    &__content-wrap {
+      display: flex;
+      flex-direction: column;
+      background-color: mat.m2-get-color-from-palette($foreground, base);
+      border-radius: 15px;
+      margin-left: 10px;
+      padding: 40px;
+      align-self: start;
+      flex-shrink: 0;
       gap: 10px;
     }
 
-    .skills__language-label {
-      width: 100%;
-    }
-  }
-
-  &--xs {
-    .skills__title {
-      align-items: center;
+    &__languages {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      gap: 20px;
     }
 
-    .skills__content-wrap {
-      margin: 0 auto;
-      padding: 20px;
+    &__language-label {
+      width: 220px;
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    &__language-name-wrap {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    &__language-name {
+      border: 1px solid #808080;
+      border-radius: 10px;
+      padding: 5px 10px;
+    }
+
+    &--sm, &--xs {
+      .skills__title {
+        font-size: 60px;
+      }
+
+      .skills__languages {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .skills__language-label {
+        width: 100%;
+      }
+    }
+
+    &--xs {
+      .skills__title {
+        align-items: center;
+      }
+
+      .skills__content-wrap {
+        margin: 0 auto;
+        padding: 20px;
+      }
     }
   }
 }

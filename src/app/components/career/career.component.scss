@@ -1,175 +1,189 @@
-.career {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__wrap {
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
+
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  .career {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-  }
 
-  &__title {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: start;
-    color: #FFFFFF;
-    font-size: 80px;
-    font-weight: 800;
-    line-height: 80px;
-    text-decoration: none;
-    padding-bottom: 40px;
-    margin: 0;
-  }
-
-  &__highlight {
-    color: #FFFFFF;
-  }
-
-  &__plain {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &__content-wrap {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    align-items: start;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    align-items: start;
-    gap: 40px;
-  }
-
-  &__image-wrap {
-    display: flex;
-    width: 100px;
-    border-radius: 50%;
-    padding: 30px;
-    border: 2px solid #808080;
-    background-color: #FFFFFF;
-  }
-
-  &__image {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  &__information-wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-
-  &__information {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__firm {
-    color: #FFFFFF;
-    font-size: 30px;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  &__period {
-    color: #808080;
-    font-size: 20px;
-    border-bottom: 1px solid #808080;
-  }
-
-  &__project-wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    gap: 5px;
-    padding-bottom: 20px;
-
-    & + .career__project-wrap {
-      border-top: 1px solid #808080;
+    &__wrap {
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    &:last-child {
-      padding-bottom: 0;
+    &__title {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: start;
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 80px;
+      text-decoration: none;
+      padding-bottom: 40px;
+      margin: 0;
     }
-  }
 
-  &__project {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 10px;
-  }
-
-  &__project-title {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    font-size: 20px;
-    margin-top: 20px;
-    padding-left: 10px;
-    border-left: 3px solid #FFFFFF;
-    color: #FFFFFF;
-    gap: 10px;
-  }
-
-  &__project-period {
-    display: flex;
-    align-items: center;
-    color: #808080;
-    font-size: 1rem;
-  }
-
-  &__project-description-wrap {
-    margin: 0;
-    padding-left: 15px;
-  }
-
-  &__project-skills {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  &__project-skill {
-    padding: 5px 10px;
-    border: 1px solid #808080;
-    border-radius: 10px;
-  }
-
-  &--sm, &--xs {
-    .career {
-      &__title {
-        font-size: 60px;
-      }
-
-      &__project-title {
-        flex-direction: column;
-        gap: unset;
-      }
+    &__highlight {
+      color: mat.m2-get-color-from-palette($foreground, base);
     }
-  }
 
-  &--xs {
-    .career__title {
+    &__plain {
       display: flex;
-      align-items: center;
+      justify-content: flex-end;
     }
 
-    .career__content {
+    &__content-wrap {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      align-items: start;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      align-items: start;
+      gap: 40px;
+    }
+
+    &__image-wrap {
+      display: flex;
+      width: 100px;
+      border-radius: 50%;
+      padding: 30px;
+      border: 2px solid #808080;
+      background-color: mat.m2-get-color-from-palette($foreground, base);
+    }
+
+    &__image {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &__information-wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    &__information {
+      display: flex;
       flex-direction: column;
     }
 
-    .career__image-wrap {
-      margin: 0 auto;
+    &__firm {
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 30px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    &__period {
+      color: #808080;
+      font-size: 20px;
+      border-bottom: 1px solid #808080;
+    }
+
+    &__project-wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      color: mat.m2-get-color-from-palette($foreground, base);
+      gap: 5px;
+      padding-bottom: 20px;
+
+      & + .career__project-wrap {
+        border-top: 1px solid #808080;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    &__project {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      gap: 10px;
+    }
+
+    &__project-title {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      font-size: 20px;
+      margin-top: 20px;
+      padding-left: 10px;
+      border-left: 3px solid mat.m2-get-color-from-palette($foreground, base);
+      color: mat.m2-get-color-from-palette($foreground, base);
+      gap: 10px;
+    }
+
+    &__project-period {
+      display: flex;
+      align-items: center;
+      color: #808080;
+      font-size: 1rem;
+    }
+
+    &__project-description-wrap {
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    &__project-skills {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    &__project-skill {
+      padding: 5px 10px;
+      border: 1px solid #808080;
+      border-radius: 10px;
+    }
+
+    &--sm, &--xs {
+      .career {
+        &__title {
+          font-size: 60px;
+        }
+
+        &__project-title {
+          flex-direction: column;
+          gap: unset;
+        }
+      }
+    }
+
+    &--xs {
+      .career__title {
+        display: flex;
+        align-items: center;
+      }
+
+      .career__content {
+        flex-direction: column;
+      }
+
+      .career__image-wrap {
+        margin: 0 auto;
+      }
     }
   }
 }

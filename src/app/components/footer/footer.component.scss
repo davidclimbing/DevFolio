@@ -1,10 +1,25 @@
-.footer {
-  padding: 3rem 0;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__wrap {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    color: #FFFFFF;
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
+
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  .footer {
+    padding: 3rem 0;
+    background-color: mat.m2-get-color-from-palette($background, background);
+
+    &__wrap {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      color: mat.m2-get-color-from-palette($foreground, base);
+    }
   }
 }

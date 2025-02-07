@@ -1,141 +1,155 @@
-.project-details {
-  position: relative;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__close {
-    position: absolute;
-    outline: none;
-    top: 40px;
-    right: 40px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
 
-  &__wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    background-color: #FFFFFF;
-    padding: 40px;
-    gap: 10px;
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
+
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
+
+  .project-details {
+    position: relative;
     width: 100%;
-  }
-
-  &__title-wrap {
-    display: flex;
-    flex-direction: row;
+    padding: 20px;
     box-sizing: border-box;
-    align-items: center;
-    gap: 10px;
-  }
 
-  &__title {
-    align-self: start;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(244, 108, 56);
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    &--disabled {
-      background-color: #808080;
+    &__close {
+      position: absolute;
+      outline: none;
+      top: 40px;
+      right: 40px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
-  }
 
-  &__content-wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 40px;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 10px;
-  }
-
-  &__description {
-
-  }
-
-  &__role-wrap {
-    ul {
-      padding-left: 15px;
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      background-color: mat.m2-get-color-from-palette($foreground, base);
+      padding: 40px;
+      gap: 10px;
+      width: 100%;
     }
-  }
 
-  &__role {
-    word-break: keep-all;
-  }
-
-  &__result-wrap {
-    ul {
-      padding-left: 15px;
+    &__title-wrap {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      align-items: center;
+      gap: 10px;
     }
-  }
 
-  &__result {
-    word-break: keep-all;
-  }
+    &__title {
+      align-self: start;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(244, 108, 56);
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-  &__card {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    border: 1px solid #808080;
-    background-color: #FFFFFF;
-    padding: 40px;
-    border-radius: 15px;
-    gap: 20px;
-  }
+      &--disabled {
+        background-color: #808080;
+      }
+    }
 
-  &__card-title {
-    align-self: start;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(244, 108, 56);
-    font-weight: bold;
-
-    &--ko {
+    &__content-wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      gap: 40px;
       font-family: 'Noto Sans KR', sans-serif;
     }
-  }
 
-  &__skills {
-    align-self: start;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(197, 255, 65);
-  }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      gap: 10px;
+    }
 
-  &__link-wrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    padding-left: 20px;
-  }
+    &__description {
 
-  &__link {
-    color: rgb(21, 19, 18);
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
+    }
 
-  &__disabled-text {
-    color: #808080;
-    font-size: 16px;
+    &__role-wrap {
+      ul {
+        padding-left: 15px;
+      }
+    }
+
+    &__role {
+      word-break: keep-all;
+    }
+
+    &__result-wrap {
+      ul {
+        padding-left: 15px;
+      }
+    }
+
+    &__result {
+      word-break: keep-all;
+    }
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      border: 1px solid #808080;
+      background-color: mat.m2-get-color-from-palette($foreground, base);
+      padding: 40px;
+      border-radius: 15px;
+      gap: 20px;
+    }
+
+    &__card-title {
+      align-self: start;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(244, 108, 56);
+      font-weight: bold;
+
+      &--ko {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+    }
+
+    &__skills {
+      align-self: start;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(197, 255, 65);
+    }
+
+    &__link-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      padding-left: 20px;
+    }
+
+    &__link {
+      color: rgb(21, 19, 18);
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    &__disabled-text {
+      color: #808080;
+      font-size: 16px;
+    }
   }
 }

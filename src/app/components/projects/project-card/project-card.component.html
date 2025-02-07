@@ -1,4 +1,4 @@
-<div class="project-card">
+<div class="project-card" [ngClass]="{'project-card--mobile': isMobile, 'project-card--expanded': isExpanded}">
   <div class="project-card__wrap">
     <div class="project-card__title-wrap">
       <div class="project-card__title">

@@ -1,133 +1,151 @@
-.about {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  color: #FFFFFF;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
 
-    &--expanded {
-      width: 100%;
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
 
-      .about__content-wrap {
-        margin: 0 auto;
-      }
-    }
-  }
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
 
-  &__details-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .about {
     position: relative;
-  }
-
-  &__content-wrap {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    gap: 20px;
-  }
-
-  &__title {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: start;
-    color: #FFFFFF;
-    font-size: 80px;
-    font-weight: 800;
-    line-height: 80px;
-    text-decoration: none;
-    padding-bottom: 40px;
-    margin: 0;
-  }
-
-  &__profile-wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    width: 200px;
-  }
-
-  &__profile-image-wrap {
-    display: flex;
-    box-sizing: border-box;
-    border-radius: 10px;
-  }
-
-  &__profile-image {
-    display: block;
     box-sizing: border-box;
     width: 100%;
-    border-radius: 30px;
-  }
+    color: mat.m2-get-color-from-palette($foreground, base);
 
-  &__name {
-    font-size: 40px;
-    font-weight: 700;
-    padding-left: 20px;
-  }
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-  &__description-wrap {
-    display: flex;
-    flex-direction: column;
-  }
+      &--expanded {
+        width: 100%;
 
-  &__description {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 18px;
-    line-height: 150%;
-    font-family: 'Noto Sans KR', sans-serif;
-    word-break: keep-all;
-  }
-
-  &__links-wrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 20px;
-    gap: 30px;
-  }
-
-  &__link-icon-wrap {
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-  &--sm, &--xs {
-    .about {
-      &__title {
-        font-size: 60px;
+        .about__content-wrap {
+          margin: 0 auto;
+        }
       }
     }
-  }
 
-  &--xs {
-    .about__title {
-      align-items: center;
-    }
-
-    .about__name {
-      padding: 0;
+    &__details-wrap {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
     }
 
-    .about__content-wrap {
+    &__content-wrap {
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      gap: 20px;
+    }
+
+    &__title {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: start;
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 80px;
+      text-decoration: none;
+      padding-bottom: 40px;
+      margin: 0;
+    }
+
+    &__profile-wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      width: 200px;
+    }
+
+    &__profile-image-wrap {
+      display: flex;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+
+    &__profile-image {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: 30px;
+    }
+
+    &__name {
+      font-size: 40px;
+      font-weight: 700;
+      padding-left: 20px;
+    }
+
+    &__description-wrap {
+      display: flex;
       flex-direction: column;
     }
 
-    .about__profile-wrap {
-      margin: 0 auto;
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+      line-height: 150%;
+      font-family: 'Noto Sans KR', sans-serif;
+      word-break: keep-all;
+    }
+
+    &__links-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 20px;
+      gap: 30px;
+    }
+
+    &__link-icon-wrap {
+      color: mat.m2-get-color-from-palette($foreground, base);
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      svg {
+        fill: mat.m2-get-color-from-palette($foreground, base);
+      }
+    }
+
+    &--sm, &--xs {
+      .about {
+        &__title {
+          font-size: 60px;
+        }
+      }
+    }
+
+    &--xs {
+      .about__title {
+        align-items: center;
+      }
+
+      .about__name {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .about__content-wrap {
+        flex-direction: column;
+      }
+
+      .about__profile-wrap {
+        margin: 0 auto;
+      }
     }
   }
 }

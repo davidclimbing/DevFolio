@@ -1,79 +1,93 @@
-.activities {
-  position: relative;
-  width: 100%;
+@use 'sass:map';
+@use '@angular/material' as mat;
 
-  &__wrap {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.m2-get-color-config($theme);
 
-  &__title {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: start;
-    color: #FFFFFF;
-    font-size: 80px;
-    font-weight: 800;
-    line-height: 80px;
-    text-decoration: none;
-    padding-bottom: 40px;
-    margin: 0;
-  }
+  $foreground: map.get($theme, foreground);
+  $background: map.get($theme, background);
 
-  &__content {
-    display: flex;
-  }
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  $warn-palette: map.get($color-config, "warn");
 
-  &__card {
+  .activities {
+    position: relative;
+    width: 100%;
 
-  }
-
-  &__activity-title {
-    color: #FFFFFF;
-    font-size: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
-
-    span {
-      color: #808080;
-      font-size: 1rem;
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
     }
-  }
 
-  &__activity-description {
-    font-size: 1rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    padding-left: 15px;
+    &__title {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: start;
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 80px;
+      text-decoration: none;
+      padding-bottom: 40px;
+      margin: 0;
+    }
 
-    li {
-      transition: transform ease 200ms;
-      cursor: pointer;
-      color: #FFFFFF;
+    &__content {
+      display: flex;
+    }
 
-      &:hover {
-        transform: scale(1.1);
+    &__card {
+
+    }
+
+    &__activity-title {
+      color: mat.m2-get-color-from-palette($foreground, base);
+      font-size: 20px;
+      font-family: 'Noto Sans KR', sans-serif;
+
+      span {
+        color: #808080;
+        font-size: 1rem;
       }
     }
-  }
 
-  &__link {
-    text-decoration: none;
-    color: #FFFFFF;
-  }
+    &__activity-description {
+      font-size: 1rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      padding-left: 15px;
 
-  &--sm, &--xs {
-    .activities__title {
-      font-size: 60px;
+      li {
+        transition: transform ease 200ms;
+        cursor: pointer;
+        color: mat.m2-get-color-from-palette($foreground, base);
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     }
-  }
 
-  &--xs {
-    .activities__title {
-      align-items: center;
+    &__link {
+      text-decoration: none;
+      color: mat.m2-get-color-from-palette($foreground, base);
     }
 
-    .activities__card {
-      margin: 0 auto;
+    &--sm, &--xs {
+      .activities__title {
+        font-size: 60px;
+      }
+    }
+
+    &--xs {
+      .activities__title {
+        align-items: center;
+      }
+
+      .activities__card {
+        margin: 0 auto;
+      }
     }
   }
 }
