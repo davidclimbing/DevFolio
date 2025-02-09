@@ -43,18 +43,13 @@
       display: inline-flex;
       flex-direction: column;
       justify-content: start;
-      color: mat.m2-get-color-from-palette($foreground, secondary-text);
+      color: mat.m2-get-color-from-palette($foreground, base);
       font-size: 80px;
       font-weight: 800;
       line-height: 80px;
       text-decoration: none;
       padding-bottom: 40px;
       margin: 0;
-      cursor: pointer;
-
-      &:hover {
-        color: mat.m2-get-color-from-palette($foreground, base);
-      }
     }
 
     &__content-wrap {

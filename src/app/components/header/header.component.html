@@ -10,8 +10,8 @@
       </button>
     } @else {
       <nav class="header__nav-wrap">
-        <a class="header__nav" [routerLink]="['/', 'projects']">Projects</a>
-        <a class="header__nav" [routerLink]="['/', 'about']">About</a>
+<!--        <a class="header__nav" [routerLink]="['/', 'projects']">Projects</a>-->
+<!--        <a class="header__nav" [routerLink]="['/', 'about']">About</a>-->
         <button class="header__theme-button" type="button" (click)="toggleTheme()">
           @if (this.defaultTheme) {
             <svg class="header__theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24">
@@ -31,8 +31,8 @@
     <div class="header__mobile-nav-wrap" [ngClass]="isCollapsed ? 'header__mobile-nav-wrap--active' : ''">
       <nav class="header__mobile-nav" (click)="toggleVerticalMenuBar()">
         <a class="header__mobile-nav" [routerLink]="['/']">Home</a>
-        <a class="header__mobile-nav" [routerLink]="['/', 'projects']">Projects</a>
-        <a class="header__mobile-nav" [routerLink]="['/', 'about']">About</a>
+<!--        <a class="header__mobile-nav" [routerLink]="['/', 'projects']">Projects</a>-->
+<!--        <a class="header__mobile-nav" [routerLink]="['/', 'about']">About</a>-->
       </nav>
     </div>
   }
