@@ -80,7 +80,7 @@
 
     &__arrow {
       position: relative;
-      background-color: mat.m2-get-color-from-palette($foreground, secondary-text);
+      background-color: transparent;
       border-radius: 50%;
       border: 3px solid mat.m2-get-color-from-palette($foreground, base);
       cursor: pointer;
@@ -98,16 +98,16 @@
 
       &:hover {
         span {
-          color: mat.m2-get-color-from-palette($background, hover);
+          color: mat.m2-get-color-from-palette($background, disabled-button);
         }
       }
 
       &:disabled {
-        border-color: mat.m2-get-color-from-palette($background, hover);
+        border-color: mat.m2-get-color-from-palette($background, disabled-button);
         cursor: default;
 
         span {
-          color: mat.m2-get-color-from-palette($background, hover);
+          color: mat.m2-get-color-from-palette($background, disabled-button);
         }
       }
     }

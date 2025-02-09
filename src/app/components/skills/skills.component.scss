@@ -35,7 +35,7 @@
     &__content-wrap {
       display: flex;
       flex-direction: column;
-      background-color: mat.m2-get-color-from-palette($foreground, base);
+      background-color: mat.m2-get-color-from-palette($background, app-bar);
       border-radius: 15px;
       margin-left: 10px;
       padding: 40px;
@@ -55,6 +55,7 @@
       width: 220px;
       display: flex;
       flex-shrink: 0;
+      color: mat.m2-get-color-from-palette($foreground, base);
     }
 
     &__language-name-wrap {
@@ -69,6 +70,7 @@
       border: 1px solid #808080;
       border-radius: 10px;
       padding: 5px 10px;
+      color: mat.m2-get-color-from-palette($foreground, base);
     }
 
     &--sm, &--xs {
