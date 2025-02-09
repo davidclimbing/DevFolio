@@ -4,7 +4,7 @@ import {Project} from "../../schemas/project";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
 import {NgClass} from '@angular/common';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ProjectDetailsComponent} from "./project-details/project-details.component";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
@@ -13,7 +13,6 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
   selector: 'app-projects',
   imports: [
     ProjectCardComponent,
-    RouterLink,
     NgClass
   ],
   providers: [
