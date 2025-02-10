@@ -6,7 +6,7 @@ import { THEME } from '../schemas/ui';
 })
 export class ThemeService {
   defaultTheme: string = THEME.DARK;
-  themeSignal: WritableSignal<string> = signal(this.defaultTheme);
+  themeSignal: WritableSignal<string> = signal(THEME.DARK);
 
   constructor() {
     this.defaultTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : this.defaultTheme;

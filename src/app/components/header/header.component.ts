@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NgClass} from '@angular/common';
@@ -17,11 +17,12 @@ import {THEME} from "../../schemas/ui";
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  protected readonly THEME = THEME;
+
   isCollapsed: boolean = false;
   toggleVerticalMenu: boolean = false;
 
-  defaultTheme: boolean = false;
-
+  currentTheme: WritableSignal<string | null> = signal(null);
   currentDevice: string | null = null;
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'xs'],
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
               private themeService: ThemeService,) {
+    this.currentTheme.update(() => this.themeService.themeSignal());
     this.breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -69,12 +71,12 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme() {
-    this.defaultTheme = !this.defaultTheme;
-
     if (this.themeService.themeSignal() === 'dark') {
       this.themeService.setTheme(THEME.BRIGHT)
     } else {
       this.themeService.setTheme(THEME.DARK);
     }
+
+    this.currentTheme.update(() => this.themeService.themeSignal());
   }
 }
