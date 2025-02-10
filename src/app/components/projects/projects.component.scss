@@ -54,6 +54,13 @@
 
     &__content-wrap {
       width: 100%;
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+    }
+
+    &__content {
+      width: 100%;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -173,14 +180,22 @@
 
     &--xs {
       .projects {
+
         &__wrap {
           display: flex;
           flex-direction: column;
-          overflow: unset;
+          overflow: visible;
         }
 
         &__title {
           align-items: center;
+        }
+
+        &__content-wrap {
+
+        }
+
+        &__content {
         }
 
         &__arrow-wrap {
@@ -191,6 +206,12 @@
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           scrollbar-width: none;
+          scroll-padding-left: 30px;
+          padding: 0 30px;
+        }
+
+        &__cards {
+          scroll-padding-left: 40px;
         }
 
         &__card {

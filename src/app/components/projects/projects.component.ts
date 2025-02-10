@@ -45,6 +45,13 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
   get computedWidthOfCard() {
     const dividedPageWidthPerPage = this.sectionWidth / this.pageSize;
+    const mobileWrapSize = 60;
+
+    if (this.isMobile) {
+      return {
+        'width': `${dividedPageWidthPerPage - mobileWrapSize}px` || '0px',
+      }
+    }
 
     return {
       'width': `${dividedPageWidthPerPage}px` || '0px'
@@ -72,6 +79,20 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     return this.currentDevice === 'xs';
   }
 
+  get pageSizeForBreakpoints() {
+    switch (this.currentDevice) {
+      case 'xl':
+      case 'lg':
+      case 'md':
+      case 'sm':
+        return 2;
+      case 'xs':
+        return 1;
+      default:
+        return 2;
+    }
+  }
+
   constructor(private projectsService: ProjectsService,
               private dialog: MatDialog,
               private dialogRef: MatDialogRef<ProjectDetailsComponent>,
@@ -97,9 +118,12 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.pageSize = this.pageSizeForBreakpoints;
+
     fromEvent(window, 'resize').pipe(
       debounceTime(300)
     ).subscribe(() => {
+      this.pageSize = this.pageSizeForBreakpoints;
       this.sectionWidth = this.slide?.nativeElement?.offsetWidth || 0;
     })
   }
