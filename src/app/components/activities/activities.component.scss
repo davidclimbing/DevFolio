@@ -48,7 +48,7 @@
       font-family: 'Noto Sans KR', sans-serif;
 
       span {
-        color: #808080;
+        color: mat.m2-get-color-from-palette($foreground, secondary-text);
         font-size: 1rem;
       }
     }
@@ -57,6 +57,9 @@
       font-size: 1rem;
       font-family: 'Noto Sans KR', sans-serif;
       padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
 
       li {
         transition: transform ease 200ms;

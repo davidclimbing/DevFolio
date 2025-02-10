@@ -31,7 +31,7 @@ export class HomeComponent {
     [Breakpoints.XLarge, 'xl'],
   ]);
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver,) {
     this.breakpointObserver
       .observe([
         Breakpoints.XSmall,

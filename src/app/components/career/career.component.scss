@@ -64,7 +64,7 @@
       width: 100px;
       border-radius: 50%;
       padding: 30px;
-      border: 2px solid #808080;
+      border: 2px solid mat.m2-get-color-from-palette($foreground, secondary-text);
       background-color: transparent;
     }
 
@@ -92,9 +92,9 @@
     }
 
     &__period {
-      color: #808080;
+      color: mat.m2-get-color-from-palette($foreground, secondary-text);
       font-size: 20px;
-      border-bottom: 1px solid #808080;
+      border-bottom: 1px solid mat.m2-get-color-from-palette($foreground, secondary-text);;
     }
 
     &__project-wrap {
@@ -106,7 +106,7 @@
       padding-bottom: 20px;
 
       & + .career__project-wrap {
-        border-top: 1px solid #808080;
+        border-top: 1px solid mat.m2-get-color-from-palette($foreground, secondary-text);;
       }
 
       &:last-child {
@@ -136,7 +136,7 @@
     &__project-period {
       display: flex;
       align-items: center;
-      color: #808080;
+      color: mat.m2-get-color-from-palette($foreground, secondary-text);
       font-size: 1rem;
     }
 
@@ -154,7 +154,7 @@
 
     &__project-skill {
       padding: 5px 10px;
-      border: 1px solid #808080;
+      border: 1px solid mat.m2-get-color-from-palette($foreground, secondary-text);
       border-radius: 10px;
     }
 

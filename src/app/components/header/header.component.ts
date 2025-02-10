@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
   toggleTheme() {
     this.defaultTheme = !this.defaultTheme;
 
-    if (this.themeService.defaultTheme === 'dark') {
+    if (this.themeService.themeSignal() === 'dark') {
       this.themeService.setTheme(THEME.BRIGHT)
     } else {
       this.themeService.setTheme(THEME.DARK);
