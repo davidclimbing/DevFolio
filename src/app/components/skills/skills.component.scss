@@ -36,6 +36,7 @@
       display: flex;
       flex-direction: column;
       background-color: mat.m2-get-color-from-palette($background, app-bar);
+      box-shadow: 2px 2px 8px 0 mat.m2-get-color-from-palette($background, base);
       border-radius: 15px;
       margin-left: 10px;
       padding: 40px;
