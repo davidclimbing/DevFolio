@@ -2,39 +2,37 @@
   <div class="projects__wrap" [ngClass]="isExpanded ? 'projects__wrap--expanded' : ''">
     <h2 class="projects__title">PROJECTS</h2>
 
-    <div class="projects__content-wrap">
-      <div class="projects__content" #slide>
-        @if (!isExpanded) {
-          <div class="projects__arrow-wrap">
-            <button class="projects__arrow"
-                    [disabled]="!(currentPage > 1)"
-                    (click)="movePreviousPage()">
-              <span class="material-icons">chevron_left</span>
-            </button>
-            <button class="projects__arrow projects__arrow--next"
-                    [disabled]="!(currentPage + 1 < projects?.length)"
-                    (click)="moveNextPage()">
-              <span class="material-icons">chevron_right</span>
-            </button>
-          </div>
-        }
-        <div class="projects__card-wrap">
-          @if (isExpanded) {
-            @for (project of projects; track project.title) {
-              <div class="projects__cards" (click)="onOpenProjectDetails(project)">
-                <app-project-card [project]="project" [isExpanded]="isExpanded"></app-project-card>
-              </div>
-            }
-          } @else {
-            <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
-              @for (project of projects; track project.id) {
-                <div class="projects__card" [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
-                  <app-project-card [project]="project" [currentDevice]="currentDevice"></app-project-card>
-                </div>
-              }
+    <div class="projects__content" #slide>
+      @if (!isExpanded) {
+        <div class="projects__arrow-wrap">
+          <button class="projects__arrow"
+                  [disabled]="!(currentPage > 1)"
+                  (click)="movePreviousPage()">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button class="projects__arrow projects__arrow--next"
+                  [disabled]="!(currentPage + 1 < projects?.length)"
+                  (click)="moveNextPage()">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+      }
+      <div class="projects__card-wrap">
+        @if (isExpanded) {
+          @for (project of projects; track project.title) {
+            <div class="projects__cards" (click)="onOpenProjectDetails(project)">
+              <app-project-card [project]="project" [isExpanded]="isExpanded"></app-project-card>
             </div>
           }
-        </div>
+        } @else {
+          <div class="projects__cards" [style]="styleOfLeftShiftPercentOnSlide">
+            @for (project of projects; track project.id) {
+              <div class="projects__card" [style]="computedWidthOfCard" (click)="onOpenProjectDetails(project)">
+                <app-project-card [project]="project" [currentDevice]="currentDevice"></app-project-card>
+              </div>
+            }
+          </div>
+        }
       </div>
     </div>
   </div>

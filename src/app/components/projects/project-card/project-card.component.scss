@@ -186,6 +186,7 @@
 
       .project-card__wrap {
         padding: 20px;
+        border: 1px solid mat.m2-get-color-from-palette($foreground, base);
         box-shadow: none;
       }
     }
