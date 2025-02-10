@@ -4,7 +4,7 @@
 @use "index" as components;
 @use "typography" as typography;
 
-$light-primary-palette: (50 : #E5F8FC,
+$bright-primary-palette: (50 : #E5F8FC,
         100 : #BDECF7,
         200 : #92E0F1,
         300 : #66D4EB,
@@ -28,7 +28,7 @@ $light-primary-palette: (50 : #E5F8FC,
         )
 );
 
-$light-secondary-palette: (
+$bright-secondary-palette: (
         50 : #EBE6FC,
         100 : #CEBFF7,
         200 : #AD95F1,
@@ -61,23 +61,23 @@ $light-secondary-palette: (
         )
 );
 
-$shire-light-primary-palette: mat.m2-define-palette($light-primary-palette);
-$shire-light-secondary-palette: mat.m2-define-palette($light-secondary-palette);
+$bright-primary-palette: mat.m2-define-palette($bright-primary-palette);
+$bright-secondary-palette: mat.m2-define-palette($bright-secondary-palette);
 
-$shire-light-theme: mat.m2-define-light-theme(
+$bright-theme: mat.m2-define-light-theme(
                 (
                         color: (
-                                primary: $shire-light-primary-palette,
-                                accent: $shire-light-secondary-palette,
+                                primary: $bright-primary-palette,
+                                accent: $bright-secondary-palette,
                         ),
                 )
 );
 
 .theme-bright {
-  @include mat.all-component-colors($shire-light-theme);
+  @include mat.all-component-colors($bright-theme);
   @include components.theme(
-                  $shire-light-theme,
-                  typography.$shire-typography-config
+                  $bright-theme,
+                  typography.$typography-config
   );
   @include mat.form-field-density(-1);
   @include mat.button-density(-1);

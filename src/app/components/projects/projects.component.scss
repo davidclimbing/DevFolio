@@ -91,12 +91,6 @@
         color: mat.m2-get-color-from-palette($foreground, base);
       }
 
-      &:hover {
-        span {
-          color: mat.m2-get-color-from-palette($background, disabled-button);
-        }
-      }
-
       &:disabled {
         border-color: mat.m2-get-color-from-palette($background, disabled-button);
         cursor: default;

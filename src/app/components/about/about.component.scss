@@ -68,7 +68,6 @@
     &__profile-image-wrap {
       display: flex;
       box-sizing: border-box;
-      border-radius: 10px;
     }
 
     &__profile-image {
@@ -76,6 +75,7 @@
       box-sizing: border-box;
       width: 100%;
       border-radius: 30px;
+      border: 1px solid mat.m2-get-color-from-palette($foreground, base);
     }
 
     &__name {

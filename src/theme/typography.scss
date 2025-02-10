@@ -4,7 +4,7 @@ $font-family: 'Poppins', sans-serif;
 $line-height: 1.35;
 $letter-spacing: -.05rem;
 
-$shire-typography-config: mat.m2-define-typography-config(
+$typography-config: mat.m2-define-typography-config(
         $headline-1: mat.m2-define-typography-level(6rem, $line-height, 300, $font-family, $letter-spacing),
         $headline-2: mat.m2-define-typography-level(3.75rem, $line-height, 300, $font-family, $letter-spacing),
         $headline-3: mat.m2-define-typography-level(3rem, $line-height, 400, $font-family, $letter-spacing),

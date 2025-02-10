@@ -46,6 +46,7 @@
       flex-direction: row;
       justify-content: center;
       gap: 20px;
+      position: relative;
     }
 
     &__nav {
@@ -60,26 +61,57 @@
     }
 
     &__theme-button {
-      background: transparent;
-      border: none;
+      display: flex;
+      border: 1px solid mat.m2-get-color-from-palette($foreground, base);
+      border-radius: 12px;
+      background-color: mat.m2-get-color-from-palette($background, background);
+      width: 40px;
+      height: 22px;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      box-sizing: border-box;
+
+      &:hover {
+        .header__theme-icon {
+          fill: mat.m2-get-color-from-palette($foreground, secondary-text);
+        }
+      }
+    }
+
+    &__theme-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      transform: translateX(calc(0% + 2px));
+      border-radius: 50%;
+      padding: 2px;
+      background-color: mat.m2-get-color-from-palette($background, app-bar);
+      transition: transform ease-in-out 300ms;
+
+      &--active {
+        transform: translateX(calc(100% - 2px));
+      }
+
+      &--deactivated {
+        transform: translateX(calc(0% + 2px));
+      }
     }
 
     &__theme-icon {
       display: flex;
       align-items: center;
       fill: mat.m2-get-color-from-palette($foreground, base);
-      cursor: pointer;
       transition: fill ease-in-out 200ms;
-
-      &:hover {
-        fill: mat.m2-get-color-from-palette($foreground, secondary-text);
-      }
+      box-sizing: border-box;
     }
 
     &__mobile-nav-wrap {
       display: flex;
       flex-direction: column;
-      background-color: #000000;
+      background-color: mat.m2-get-color-from-palette($background, app-bar);
       width: 100vw;
       height: 100vh;
       position: fixed;

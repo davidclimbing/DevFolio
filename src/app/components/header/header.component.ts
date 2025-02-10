@@ -36,6 +36,10 @@ export class HeaderComponent implements OnInit {
     return this.currentDevice === 'xs' || this.currentDevice === 'sm';
   }
 
+  get isDarkMode() {
+    return this.currentTheme() === THEME.DARK;
+  }
+
   constructor(private breakpointObserver: BreakpointObserver,
               private themeService: ThemeService,) {
     this.currentTheme.update(() => this.themeService.themeSignal());

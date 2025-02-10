@@ -54,23 +54,23 @@ $dark-secondary-palette: (
         )
 );
 
-$shire-dark-primary-palette: mat.m2-define-palette($dark-primary-palette);
-$shire-dark-secondary-palette: mat.m2-define-palette($dark-secondary-palette);
+$dark-primary-palette: mat.m2-define-palette($dark-primary-palette);
+$dark-secondary-palette: mat.m2-define-palette($dark-secondary-palette);
 
-$shire-dark-theme: mat.m2-define-dark-theme(
+$dark-theme: mat.m2-define-dark-theme(
                 (
                         color: (
-                                primary: $shire-dark-primary-palette,
-                                accent: $shire-dark-secondary-palette,
+                                primary: $dark-primary-palette,
+                                accent: $dark-secondary-palette,
                         ),
                 )
 );
 
 .theme-dark {
-  @include mat.all-component-colors($shire-dark-theme);
+  @include mat.all-component-colors($dark-theme);
   @include components.theme(
-                  $shire-dark-theme,
-                  typography.$shire-typography-config
+                  $dark-theme,
+                  typography.$typography-config
   );
   @include mat.form-field-density(-1);
   @include mat.button-density(-1);

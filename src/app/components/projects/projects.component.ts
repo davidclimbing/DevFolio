@@ -58,6 +58,10 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
   get styleOfLeftShiftPercentOnSlide() {
     const shiftingPercentage = 100 / this.projects.length;
 
+    if (this.isMobile) {
+      return {'transform': `translate(0, 0)`};
+    }
+
     return {
       'transform': `translate(-${shiftingPercentage * this.numberOfShiftCards}%, 0)`,
       'transition': 'transform 0.3s ease-in-out'
