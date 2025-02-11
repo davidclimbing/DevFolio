@@ -186,8 +186,11 @@
 
       .project-card__wrap {
         padding: 20px;
-        border: 1px solid mat.m2-get-color-from-palette($foreground, base);
-        box-shadow: none;
+        transition: unset;
+
+        &:hover{
+          box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.80);
+        }
       }
     }
   }

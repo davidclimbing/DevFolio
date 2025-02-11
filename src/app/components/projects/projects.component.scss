@@ -51,13 +51,6 @@
       margin: 0;
     }
 
-    &__content-wrap {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      box-sizing: border-box;
-    }
-
     &__content {
       width: 100%;
       position: relative;
@@ -179,18 +172,13 @@
 
     &--xs {
       .projects {
-
         &__wrap {
           display: flex;
           flex-direction: column;
-          overflow: visible;
         }
 
         &__title {
           align-items: center;
-        }
-
-        &__content {
         }
 
         &__arrow-wrap {
@@ -202,7 +190,7 @@
           scroll-snap-type: x mandatory;
           scrollbar-width: none;
           scroll-padding-left: 30px;
-          padding: 0 30px;
+          padding: 1px 30px;
         }
 
         &__cards {

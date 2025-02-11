@@ -9,17 +9,12 @@
 @include mat.core();
 @include mat.all-component-bases(dark-theme);
 
-html, body {
-  height: 100%;
-  min-height: 100%;
-}
-
 html {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  height: 100%;
+  font: 16px 'Poppins', sans-serif;
 }
 
 body {
+  min-height: 100%;
   margin: 0;
-  padding: 0;
 }

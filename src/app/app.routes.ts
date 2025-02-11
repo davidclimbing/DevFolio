@@ -9,7 +9,7 @@ import {AboutComponent} from "./components/about/about.component";
 export const routes: Routes = [
   {
     path: '',
-    title: 'DavidClimbing\'s Portfolio',
+    title: 'DavidClimbing',
     component: HomeComponent,
   },
   {
