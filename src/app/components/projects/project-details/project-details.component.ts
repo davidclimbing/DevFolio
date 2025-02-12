@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Project} from '../../../schemas/project';
+import {Project} from '../../../schemas/contents';
 import {MAT_DIALOG_DATA, MatDialogClose} from "@angular/material/dialog";
 import {NgClass} from "@angular/common";
 

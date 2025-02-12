@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, signal, ViewChild, WritableSignal} from '@angular/core';
-import {ProjectsService} from "../../services/project.service";
-import {Project} from "../../schemas/project";
+import {ContentsService} from "../../services/contents.service";
+import {Project} from "../../schemas/contents";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {debounceTime, fromEvent} from "rxjs";
 import {NgClass} from '@angular/common';
@@ -24,10 +24,9 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
-  @Input() isExpanded = true;
+  @Input() projects: Project[] = [];
   @ViewChild("slide") slide: ElementRef;
 
-  projects: Project[] = [];
   sectionWidth: number = 0;
   pageSize: number = 2;
   currentPage: number = 1;
@@ -93,7 +92,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private projectsService: ProjectsService,
+  constructor(private contentsService: ContentsService,
               private dialog: MatDialog,
               private dialogRef: MatDialogRef<ProjectDetailsComponent>,
               private route: ActivatedRoute,
@@ -114,7 +113,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
         }
       });
 
-    this.projects = this.projectsService.getProjects();
+    // this.projects = this.contentsService.getProjects();
   }
 
   ngOnInit() {

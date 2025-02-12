@@ -3,9 +3,9 @@
     <span class="material-icons">close</span>
   </button>
   <div class="project-details__wrap">
-     <div class="project-details__title-wrap">
+    <div class="project-details__title-wrap">
       <div class="project-details__title" [ngClass]="project?.link ? '' : 'project-details__title--disabled'">
-        {{project?.title}}
+        {{ project?.title }}
         @if (project?.link) {
           <div class="project-details__link-wrap">
             <a class="project-details__link" [href]="project?.link" target="_blank">
@@ -22,13 +22,13 @@
     <div class="project-details__content-wrap">
       <div class="project-details__content">
         <div class="project-details__description">
-          설명 : {{project?.description}}
+          설명 : {{ project?.description }}
         </div>
         <div class="project-details__role-wrap">
           역할 :
           <ul>
             @for (role of project?.role; track role) {
-              <li class="project-details__role">{{role}}</li>
+              <li class="project-details__role">{{ role }}</li>
             }
           </ul>
         </div>
@@ -36,7 +36,7 @@
           성과 :
           <ul>
             @for (result of project?.result; track result) {
-              <li class="project-details__result">{{result}}</li>
+              <li class="project-details__result">{{ result }}</li>
             }
           </ul>
         </div>

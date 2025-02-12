@@ -6,6 +6,8 @@ import {SkillsComponent} from "../skills/skills.component";
 import {ActivitiesComponent} from "../activities/activities.component";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {NgClass} from '@angular/common';
+import {ContentsService} from "../../services/contents.service";
+import {Project} from "../../schemas/contents";
 
 @Component({
   selector: 'app-home',
@@ -31,7 +33,10 @@ export class HomeComponent {
     [Breakpoints.XLarge, 'xl'],
   ]);
 
-  constructor(private breakpointObserver: BreakpointObserver,) {
+  projects: Project[] = [];
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              private contentsService: ContentsService,) {
     this.breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -47,5 +52,9 @@ export class HomeComponent {
           }
         }
       });
+
+    this.contentsService.getContents().subscribe(contents => {
+      this.projects = contents?.projects;
+    })
   }
 }

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Project} from "../../../schemas/project";
+import {Project} from "../../../schemas/contents";
 import {NgClass} from "@angular/common";
 
 @Component({

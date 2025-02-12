@@ -1,3 +1,7 @@
+export interface Contents {
+  projects: Project[];
+}
+
 export interface Project {
   id: string;
   title: string;
