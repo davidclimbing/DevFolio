@@ -10,8 +10,6 @@
       </button>
     } @else {
       <nav class="header__nav-wrap">
-<!--        <a class="header__nav" [routerLink]="['/', 'projects']">Projects</a>-->
-<!--        <a class="header__nav" [routerLink]="['/', 'about']">About</a>-->
         <button class="header__theme-button"
                 type="button"
                 (click)="toggleTheme()"
@@ -28,6 +26,7 @@
             }
           </div>
         </button>
+        <a class="header__nav" href="https://blog.davidclimbing.com" target="_blank">Blog</a>
       </nav>
     }
   </div>
@@ -36,8 +35,7 @@
     <div class="header__mobile-nav-wrap" [ngClass]="isCollapsed ? 'header__mobile-nav-wrap--active' : ''">
       <nav class="header__mobile-nav" (click)="toggleVerticalMenuBar()">
         <a class="header__mobile-nav" [routerLink]="['/']">Home</a>
-<!--        <a class="header__mobile-nav" [routerLink]="['/', 'projects']">Projects</a>-->
-<!--        <a class="header__mobile-nav" [routerLink]="['/', 'about']">About</a>-->
+        <a class="header__nav" href="https://blog.davidclimbing.com" target="_blank">Blog</a>
       </nav>
     </div>
   }
