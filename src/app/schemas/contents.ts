@@ -13,4 +13,5 @@ export interface Project {
   result?: string[];
   gif?: string;
   code?: string[];
+  detailed?: string;
 }
