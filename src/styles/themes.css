@@ -1,0 +1,144 @@
+/* GitHub 스타일 테마 */
+
+:root {
+  /* 공통 변수 */
+  --transition-duration: 0.3s;
+  --gradient-from: #3b82f6; /* blue-400 */
+  --gradient-to: #a855f7; /* purple-500 */
+  --gradient-background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+}
+
+/* 다크 테마 (기본 테마) */
+.dark {
+  /* 색상 */
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-tertiary: #21262d;
+  --color-border-primary: #30363d;
+  --color-border-secondary: #21262d;
+  --color-text-primary: #c9d1d9;
+  --color-text-secondary: #8b949e;
+  --color-text-tertiary: #6e7681;
+  --color-text-link: #58a6ff;
+  --color-text-danger: #f85149;
+  --color-btn-primary-bg: #238636;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-border: rgba(240, 246, 252, 0.1);
+  --color-btn-primary-hover-bg: #2ea043;
+  --color-header-bg: #161b22;
+  --color-header-border: #30363d;
+  --color-header-text: #c9d1d9;
+  --color-header-logo: #f0f6fc;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-accent: #1f6feb;
+  --color-hover-bg: #21262d;
+  --color-active-item: #ffffff;
+  --color-card-bg: #161b22;
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #a855f7;
+  --color-card-hover: rgba(59, 130, 246, 0.1);
+}
+
+/* 라이트 테마 */
+.light {
+  /* 색상 */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f6f8fa;
+  --color-bg-tertiary: #eaeef2;
+  --color-border-primary: #d0d7de;
+  --color-border-secondary: #eaeef2;
+  --color-text-primary: #24292f;
+  --color-text-secondary: #57606a;
+  --color-text-tertiary: #6e7781;
+  --color-text-link: #0969da;
+  --color-text-danger: #cf222e;
+  --color-btn-primary-bg: #2da44e;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-border: rgba(31, 35, 40, 0.15);
+  --color-btn-primary-hover-bg: #2c974b;
+  --color-header-bg: #24292f;
+  --color-header-border: #d0d7de;
+  --color-header-text: #f0f6fc;
+  --color-header-logo: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-accent: #0969da;
+  --color-hover-bg: #eaeef2;
+  --color-active-item: #24292f;
+  --color-card-bg: #f6f8fa;
+  --color-accent-blue: #1d4ed8;
+  --color-accent-purple: #7e22ce;
+  --color-card-hover: rgba(37, 99, 235, 0.05);
+}
+
+/* 테마 전환 시 부드러운 전환 효과 */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* 헤더 스타일 */
+header {
+  background-color: var(--color-header-bg) !important;
+  border-color: var(--color-header-border) !important;
+  color: var(--color-header-text) !important;
+  transition: background-color var(--transition-duration), border-color var(--transition-duration);
+}
+
+/* 로고 스타일 */
+#header-logo {
+  color: var(--color-header-logo) !important;
+  transition: color var(--transition-duration);
+}
+
+/* 테마 토글 버튼 스타일 */
+#theme-toggle {
+  color: var(--color-header-text) !important;
+  transition: color var(--transition-duration), background-color var(--transition-duration);
+}
+
+#theme-toggle:hover {
+  background-color: var(--color-hover-bg) !important;
+}
+
+/* 테마 전환 아이콘 애니메이션 */
+#theme-toggle svg {
+  transition: transform 0.5s ease;
+}
+
+#theme-toggle:hover svg {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* 블로그 링크 스타일 */
+#blog-link {
+  color: var(--color-header-text) !important;
+  border-color: var(--color-border-primary) !important;
+  transition: color var(--transition-duration), 
+    background-color var(--transition-duration), 
+    border-color var(--transition-duration);
+}
+
+#blog-link:hover {
+  background-color: var(--color-hover-bg) !important;
+}
+
+/* 기본 텍스트 및 요소 스타일 */
+section {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary) !important;
+  transition: background-color var(--transition-duration), border-color var(--transition-duration);
+}
+
+.bg-gray-700, .bg-gray-800 {
+  background-color: var(--color-card-bg) !important;
+  transition: background-color var(--transition-duration);
+}
+
+/* 그라디언트 설정을 위한 유틸리티 클래스 */
+.gradient-text {
+  background: var(--gradient-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+} 
