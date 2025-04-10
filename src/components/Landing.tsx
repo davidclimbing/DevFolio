@@ -26,12 +26,12 @@ const Landing = () => {
   };
 
   return (
-    <section id="landing" className="min-h-screen flex items-center justify-center relative">
+    <section id="landing" className="h-screen w-full flex items-center justify-center relative">
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-gradient-to-r from-blue-900 to-purple-900 opacity-30 absolute"></div>
         <div className="w-full h-full bg-repeat opacity-5 absolute" style={{ backgroundImage: `url(${bgPattern})` }}></div>
       </div>
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="container mx-auto px-4 py-30 text-center relative z-10">
         <div className="mb-8 animate-fadeIn">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 glitch-text">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
@@ -46,13 +46,14 @@ const Landing = () => {
         <div className="flex flex-col md:flex-row gap-6 justify-center mt-12 animate-fadeIn animation-delay-300">
           <button
             onClick={scrollToAbout}
-            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-full text-white font-medium transform hover:scale-105 transition duration-300"
+            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 cursor-pointer hover:to-purple-600 rounded-full text-white font-medium transform hover:scale-105 transition duration-300"
           >
             더 알아보기
           </button>
           <a
             href="https://github.com/davidclimbing"
             target="_blank"
+            rel="noreferrer"
             className="px-8 py-3 border border-gray-500 hover:border-gray-300 rounded-full text-gray-300 hover:text-white font-medium transform hover:scale-105 transition duration-300 flex items-center justify-center gap-2"
           >
             <span>GitHub</span>

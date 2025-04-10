@@ -1,4 +1,4 @@
-/* GitHub 스타일 테마 */
+/* 다크 테마 스타일 */
 
 :root {
   /* 공통 변수 */
@@ -6,11 +6,8 @@
   --gradient-from: #3b82f6; /* blue-400 */
   --gradient-to: #a855f7; /* purple-500 */
   --gradient-background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
-}
 
-/* 다크 테마 (기본 테마) */
-.dark {
-  /* 색상 */
+  /* 다크 테마 색상 (기본 테마) */
   --color-bg-primary: #0d1117;
   --color-bg-secondary: #161b22;
   --color-bg-tertiary: #21262d;
@@ -39,38 +36,7 @@
   --color-card-hover: rgba(59, 130, 246, 0.1);
 }
 
-/* 라이트 테마 */
-.light {
-  /* 색상 */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f6f8fa;
-  --color-bg-tertiary: #eaeef2;
-  --color-border-primary: #d0d7de;
-  --color-border-secondary: #eaeef2;
-  --color-text-primary: #24292f;
-  --color-text-secondary: #57606a;
-  --color-text-tertiary: #6e7781;
-  --color-text-link: #0969da;
-  --color-text-danger: #cf222e;
-  --color-btn-primary-bg: #2da44e;
-  --color-btn-primary-text: #ffffff;
-  --color-btn-primary-border: rgba(31, 35, 40, 0.15);
-  --color-btn-primary-hover-bg: #2c974b;
-  --color-header-bg: #24292f;
-  --color-header-border: #d0d7de;
-  --color-header-text: #f0f6fc;
-  --color-header-logo: #ffffff;
-  --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-accent: #0969da;
-  --color-hover-bg: #eaeef2;
-  --color-active-item: #24292f;
-  --color-card-bg: #f6f8fa;
-  --color-accent-blue: #1d4ed8;
-  --color-accent-purple: #7e22ce;
-  --color-card-hover: rgba(37, 99, 235, 0.05);
-}
-
-/* 테마 전환 시 부드러운 전환 효과 */
+/* 스타일 적용 */
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);

@@ -1,27 +1,50 @@
 import useSWR from 'swr';
-import { AboutData, CareerData, Project, SkillsData } from '../types';
+import axios from 'axios';
+import { AboutData, CareerData, Project, PortfolioData, SkillsData } from '../types';
+import React from 'react';
 
-// Mock API 함수들 (실제 API가 있다면 여기서 fetch 호출)
+const axiosInstance = axios.create({
+  baseURL: '',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  timeout: 10000
+});
+
+const S3_DATA_URL = 'https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing/contents.json';
+
+const fetchPortfolioData = async (): Promise<PortfolioData> => {
+  try {
+    const response = await axiosInstance.get<PortfolioData>(S3_DATA_URL);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching portfolio data:', error);
+  }
+};
+
+// 사용자 정보는 S3에서 가져오는 것으로 변경
 const fetchAboutData = async (): Promise<AboutData> => {
-  // API 대신 하드코딩된 데이터 반환
+  // S3에서 about 데이터 가져오기
+  // 실제 구현에서는 S3에 저장된 데이터를 가져오도록 구현
   return {
-    name: "오소영",
+    name: "오승재",
     details: [
-      "1997년 5월 6일(26살) | 경기도 수원시, 서울 관악구 거주",
-      "하고 싶은 일을 담대하게 하는 사람",
-      "다양한 경험을 통해 재밌는 일을 찾고 싶어요"
+      "새로운 기술, 지속적인 성장을 탐구, 추구하는 개발자 오승재입니다"
     ]
   };
 };
 
+// 경력 정보도 S3에서 가져오기
 const fetchCareerData = async (): Promise<CareerData> => {
+  // S3에서 career 데이터 가져오기
+  // 실제 구현에서는 S3에 저장된 데이터를 가져오도록 구현
   return {
-    company: "그릿",
+    company: "7일",
     positions: [
       {
-        title: "프론트엔드 개발자(인턴)",
-        period: "2023.05.08 ~ 현재",
-        department: "소셜벤처팀 & 플랫폼개발팀"
+        title: "프론트엔드 개발자",
+        period: "2022.11.14 ~ 현재",
+        department: "개발팀"
       }
     ],
     projects: [
@@ -45,30 +68,43 @@ const fetchCareerData = async (): Promise<CareerData> => {
   };
 };
 
+// 프로젝트 데이터는 S3에서 가져옴
 const fetchProjectsData = async (): Promise<Project[]> => {
-  return [
-    {
-      id: 1,
-      title: "PROJECT 1",
-      tags: ["New", "React"]
-    },
-    {
-      id: 2,
-      title: "PROJECT 2",
-      tags: ["New", "React", "Node.js", "API"]
-    }
-  ];
+  const data = await fetchPortfolioData();
+  return data.projects;
 };
 
+// 프로젝트 데이터에서 스킬 목록 추출
 const fetchSkillsData = async (): Promise<SkillsData> => {
+  const projects = await fetchProjectsData();
+
+  // 프로젝트의 모든 스킬을 수집하고 중복 제거
+  const allSkills = projects.flatMap(project => project.skills);
+  const uniqueSkills = Array.from(new Set(allSkills));
+
+  // 스킬 분류 (단순화를 위해 임의로 분류)
+  const languages = uniqueSkills.filter(skill =>
+    ['TypeScript', 'JavaScript', 'Python', 'HTML', 'CSS'].includes(skill)
+  );
+
+  const frameworks = uniqueSkills.filter(skill =>
+    ['Angular', 'React', 'Scss', 'Vite', 'Streamlit'].includes(skill)
+  );
+
+  const tools = uniqueSkills.filter(skill =>
+    !languages.includes(skill) && !frameworks.includes(skill)
+  );
+
   return {
-    languages: ["JavaScript", "TypeScript", "HTML/CSS", "Python"],
-    frameworks: ["React", "Next.js"],
-    tools: ["Git"]
+    languages,
+    frameworks,
+    tools
   };
 };
 
 const fetchActivitiesData = async (): Promise<string[]> => {
+  // S3에서 activities 데이터 가져오기
+  // 실제 구현에서는 S3에 저장된 데이터를 가져오도록 구현
   return [
     "개인 사이드 프로젝트: 어쩌고 서비스 개발",
     "어쩌고 저쩌고 참여",
@@ -78,7 +114,6 @@ const fetchActivitiesData = async (): Promise<string[]> => {
   ];
 };
 
-// SWR Custom Hooks
 export function useAboutData() {
   const { data, error, isLoading, mutate } = useSWR<AboutData, Error>('about', fetchAboutData);
 
@@ -136,15 +171,23 @@ export function useActivitiesData() {
   };
 }
 
-// 활성 섹션 추적을 위한 전역 상태 관리
 type SectionType = 'about' | 'career' | 'projects' | 'skills' | 'activity';
 const activeSectionKey = 'activeSection';
 
+/**
+ * 현재 활성화된 섹션을 관리하는 훅
+ * 페이지 로드 시 'about' 섹션 자동 활성화
+ * 스크롤 감지 기능 제거 - 사용자가 메뉴 클릭 시에만 활성 섹션 변경
+ */
 export function useActiveSection() {
   const getInitialData = (): SectionType => 'about';
-
   const { data, mutate } = useSWR<SectionType>(activeSectionKey, getInitialData);
-
+  
+  // 페이지 최초 로드 시 'about' 섹션 활성화
+  React.useEffect(() => {
+    mutate('about', false);
+  }, [mutate]);
+  
   return {
     activeSection: data,
     setActiveSection: (section: SectionType) => mutate(section, false)
