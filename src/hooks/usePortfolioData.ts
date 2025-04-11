@@ -24,12 +24,11 @@ const fetchPortfolioData = async (): Promise<PortfolioData> => {
 
 // 사용자 정보는 S3에서 가져오는 것으로 변경
 const fetchAboutData = async (): Promise<AboutData> => {
-  // S3에서 about 데이터 가져오기
-  // 실제 구현에서는 S3에 저장된 데이터를 가져오도록 구현
   return {
     name: "오승재",
     details: [
-      "새로운 기술, 지속적인 성장을 탐구, 추구하는 개발자 오승재입니다"
+      "새로운 기술, 지속적인 성장을 탐구, 추구하는 개발자 오승재입니다",
+      "해외 기술 글 번역 활동을 통해 최신 기술 트렌드와 동향을 꾸준히 파악하고 있습니다"
     ]
   };
 };

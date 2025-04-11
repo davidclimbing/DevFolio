@@ -5,7 +5,6 @@ import ScrollAnimation from './ScrollAnimation';
 const About = () => {
   const { about, isLoading } = useAboutData();
   
-  // 업데이트된 기본 정보
   const basicInfo = {
     location: "경기도 용인시 수지구",
     email: "general.davidclimbing@gmail.com",

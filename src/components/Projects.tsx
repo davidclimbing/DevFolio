@@ -38,6 +38,22 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
         <div className="sticky top-0 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700 flex justify-between items-center p-4 z-10">
           <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
             {project.title}
+
+            <div className="flex flex-wrap gap-2 items-center my-4">
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  프로젝트 방문
+                </a>
+              )}
+            </div>
           </h2>
           <button
             className="p-1.5 rounded-full hover:bg-gray-700 transition-colors"
@@ -60,30 +76,6 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
               />
             </div>
           )}
-          
-          <div className="flex flex-wrap gap-2 items-center mb-4">
-            <div className="flex space-x-1 items-center mr-3">
-              <span className="h-2 w-2 rounded-full bg-blue-400"></span>
-              <span className="h-2 w-2 rounded-full bg-purple-500"></span>
-              <span className="h-2 w-2 rounded-full bg-blue-300"></span>
-            </div>
-            <div className="text-gray-400 text-sm">
-              {project.period}
-            </div>
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-auto flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                프로젝트 방문
-              </a>
-            )}
-          </div>
           
           <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
             <h3 className="text-lg text-white font-medium mb-3">프로젝트 소개</h3>
@@ -220,13 +212,11 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* 간략 설명 */}
                   <div className="p-5 space-y-4 relative">
                     <p className="text-gray-300 text-sm line-clamp-3">
                       {project.description}
                     </p>
 
-                    {/* 기술 스택 태그 */}
                     <div className="flex flex-wrap gap-1.5">
                       {project.skills.slice(0, 3).map((skill: string, index: number) => (
                         <span
@@ -248,7 +238,6 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* 호버 시 나타나는 버튼 */}
                   <div className={`absolute bottom-3 right-3 transition-all duration-300 ${
                     hoveredId === project.id ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                   }`}>
