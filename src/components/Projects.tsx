@@ -1,11 +1,47 @@
 import { useProjectsData } from '../hooks/usePortfolioData';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import ScrollAnimation from './ScrollAnimation';
 
 const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [autoSlide, setAutoSlide] = useState(true);
+  const autoSlideIntervalRef = useRef<number | null>(null);
+    
+  const getImagePath = (path: string) => {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    
+    if (path.startsWith('/')) {
+      return path;
+    }
+    
+    return `/assets/${path}`;
+  };
 
+  // 슬라이드 시작/중지 함수
+  const startAutoSlide = useCallback(() => {
+    stopAutoSlide();
+    
+    if (project.images && project.images.length > 1) {
+      autoSlideIntervalRef.current = window.setInterval(() => {
+        setCurrentImageIndex(prevIndex => 
+          prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000);
+    }
+  }, [project.images]);
+
+  const stopAutoSlide = useCallback(() => {
+    if (autoSlideIntervalRef.current !== null) {
+      window.clearInterval(autoSlideIntervalRef.current);
+      autoSlideIntervalRef.current = null;
+    }
+  }, []);
+
+  // 모달 초기 설정 - ESC, 외부 클릭 처리
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -19,15 +55,64 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
 
     document.addEventListener('keydown', handleEsc);
     document.addEventListener('mousedown', handleClickOutside);
-
     document.body.style.overflow = 'hidden';
+    
+    // 모달이 마운트되면 즉시 자동 슬라이드 시작
+    if (autoSlide && project.images && project.images.length > 1) {
+      startAutoSlide();
+    }
     
     return () => {
       document.removeEventListener('keydown', handleEsc);
       document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'auto';
+      stopAutoSlide();
     };
-  }, [onClose]);
+  }, [onClose, autoSlide, project.images, startAutoSlide, stopAutoSlide]);
+
+  // autoSlide 상태 변경 시 타이머 업데이트
+  useEffect(() => {
+    if (autoSlide) {
+      startAutoSlide();
+    } else {
+      stopAutoSlide();
+    }
+  }, [autoSlide, startAutoSlide, stopAutoSlide]);
+
+  // 프로젝트 변경 시 초기화
+  useEffect(() => {
+    setCurrentImageIndex(0);
+    if (autoSlide) {
+      startAutoSlide();
+    }
+  }, [project.id, autoSlide, startAutoSlide]);
+
+  const nextImage = () => {
+    if (project.images && project.images.length > 0) {
+      setAutoSlide(false);
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (project.images && project.images.length > 0) {
+      setAutoSlide(false);
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+      );
+    }
+  };
+
+  const goToImage = (index: number) => {
+    setAutoSlide(false);
+    setCurrentImageIndex(index);
+  };
+
+  const toggleAutoSlide = () => {
+    setAutoSlide(prev => !prev);
+  };
 
   return createPortal(
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
@@ -67,15 +152,90 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
         </div>
         
         <div className="p-6 space-y-6">
-          {project.image && (
+          {project.images && project.images.length > 0 ? (
+            <div className="relative rounded-lg overflow-hidden border border-gray-700">
+              <div className="relative aspect-video">
+                <img 
+                  src={getImagePath(project.images[currentImageIndex])} 
+                  alt={`${project.title} - 이미지 ${currentImageIndex + 1}`} 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                    e.currentTarget.onerror = null;
+                  }}
+                />
+              </div>
+              
+              <div className="absolute inset-0 flex items-center justify-between px-4">
+                <button 
+                  onClick={prevImage}
+                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110"
+                  aria-label="이전 이미지"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110"
+                  aria-label="다음 이미지"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+              
+              {project.images.length > 1 && (
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2 py-1.5">
+                  <button
+                    onClick={toggleAutoSlide}
+                    className={`absolute left-3 p-1.5 rounded-full transition-colors ${
+                      autoSlide ? 'bg-blue-500 text-white' : 'bg-gray-700 text-gray-300'
+                    }`}
+                    aria-label={autoSlide ? "자동 슬라이드 중지" : "자동 슬라이드 시작"}
+                  >
+                    {autoSlide ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                  </button>
+                  
+                  {project.images.map((_, index: number) => (
+                    <button
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all ${
+                        index === currentImageIndex 
+                          ? 'bg-blue-400 w-5' 
+                          : 'bg-gray-500 hover:bg-gray-400'
+                      }`}
+                      aria-label={`이미지 ${index + 1}로 이동`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : project.image ? (
             <div className="rounded-lg overflow-hidden border border-gray-700">
               <img 
-                src={project.image} 
+                src={getImagePath(project.image)} 
                 alt={project.title} 
                 className="w-full h-auto object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                  e.currentTarget.onerror = null;
+                }}
               />
             </div>
-          )}
+          ) : null}
           
           <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
             <h3 className="text-lg text-white font-medium mb-3">프로젝트 소개</h3>
@@ -190,10 +350,8 @@ const Projects = () => {
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
-                  {/* 배경 그라디언트 효과 */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
-                  {/* 헤더 부분 */}
                   <div className="relative p-5 border-b border-gray-700/50">
                     <div className="flex items-start justify-between">
                       <div>
