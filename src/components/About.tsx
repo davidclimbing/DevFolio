@@ -100,12 +100,7 @@ const About = () => {
               
               <div className="p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700">
                 <h4 className="font-medium mb-2 text-blue-400">이메일</h4>
-                <p className="text-sm text-gray-400">{basicInfo.email}</p>
-              </div>
-              
-              <div className="p-4 rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700 md:col-span-2">
-                <h4 className="font-medium mb-2 text-blue-400">관심 분야</h4>
-                <p className="text-sm text-gray-400">프론트엔드 개발, UI/UX, 웹 성능 최적화, 글로벌 서비스 개발</p>
+                <a className="text-sm text-gray-400 hover:text-gray-200 transition duration-300" href={`mailto:${basicInfo.email}`}>{basicInfo.email}</a>
               </div>
             </ScrollAnimation>
           </ScrollAnimation>

@@ -20,7 +20,6 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
     document.addEventListener('keydown', handleEsc);
     document.addEventListener('mousedown', handleClickOutside);
 
-    // 모달 오픈 시 스크롤 방지
     document.body.style.overflow = 'hidden';
     
     return () => {
@@ -31,7 +30,7 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
   }, [onClose]);
 
   return createPortal(
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
       <div 
         ref={modalRef}
         className="bg-gray-800 rounded-lg border border-gray-700 shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-in"
@@ -97,7 +96,7 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.623-9-1.746M3 16V8a1 1 0 011-1h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1z" />
                 </svg>
-                담당한 업무
+                기여한 부분
               </h3>
               <ul className="space-y-2">
                 {project.role.map((item: string, index: number) => (

@@ -33,7 +33,7 @@ export interface Project {
   code?: string[];
   gif?: string;
   period?: string;
-  image?: string;
+  images?: string[];
   github?: string;
 }
 

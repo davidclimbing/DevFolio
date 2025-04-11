@@ -39,7 +39,7 @@ const Landing = () => {
             </span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-gray-300 min-h-[2.5rem]">
-            {typing}<span className="animate-blink">|</span>
+            {typing}<span className="animate-blink"> l</span>
           </h2>
         </div>
         
