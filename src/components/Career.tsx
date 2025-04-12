@@ -1,9 +1,11 @@
 import { useCareerData } from '../hooks/usePortfolioData';
-import companyLogo from '../assets/companyLogo.png';
 import ScrollAnimation from './ScrollAnimation';
 
 const Career = () => {
   const { career, isLoading } = useCareerData();
+
+  // S3에서 회사 로고 이미지 가져오기
+  const companyLogoUrl = "https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing/assets/career/companyLogo.png";
 
   // 업데이트된 경력 정보
   const updatedCareer = {
@@ -59,7 +61,7 @@ const Career = () => {
                 <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 rounded-full">
                   <div className="rounded-full w-20 h-20 bg-gray-800/80 flex items-center justify-center">
                     <img
-                      src={companyLogo as string}
+                      src={companyLogoUrl}
                       alt="Company Logo"
                       className="w-12 h-12 object-contain"
                     />

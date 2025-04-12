@@ -1,5 +1,4 @@
 import { useAboutData } from '../hooks/usePortfolioData';
-import profileImage from '../assets/profileImage.jpeg';
 import ScrollAnimation from './ScrollAnimation';
 
 const About = () => {
@@ -10,6 +9,9 @@ const About = () => {
     email: "general.davidclimbing@gmail.com",
     github: "https://github.com/davidclimbing"
   };
+  
+  // S3에서 프로필 이미지 가져오기
+  const profileImageUrl = "https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing/assets/about/profileImage.jpeg";
 
   if (isLoading) return <div className="py-16 text-center">Loading...</div>;
   if (!about) return null;
@@ -29,7 +31,7 @@ const About = () => {
             <div className="relative mb-6 animate-float group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
               <img
-                src={profileImage as string}
+                src={profileImageUrl}
                 alt="Profile"
                 className="relative w-48 h-64 object-cover rounded-xl shadow-xl"
               />
