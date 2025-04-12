@@ -9,16 +9,8 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
   const [autoSlide, setAutoSlide] = useState(true);
   const autoSlideIntervalRef = useRef<number | null>(null);
     
-  const getImagePath = (path: string) => {
-    if (path.startsWith('http://') || path.startsWith('https://')) {
-      return path;
-    }
-    
-    if (path.startsWith('/')) {
-      return path;
-    }
-    
-    return `/assets/${path}`;
+  const getImagePath = (path: string) => {    
+    return `https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing${path}`;
   };
 
   // 슬라이드 시작/중지 함수
@@ -155,21 +147,35 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
           {project.images && project.images.length > 0 ? (
             <div className="relative rounded-lg overflow-hidden border border-gray-700">
               <div className="relative aspect-video">
-                <img 
-                  src={getImagePath(project.images[currentImageIndex])} 
-                  alt={`${project.title} - 이미지 ${currentImageIndex + 1}`} 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
-                    e.currentTarget.onerror = null;
-                  }}
-                />
+                {project.images[currentImageIndex].endsWith('.mov') ? (
+                  <video 
+                    src={getImagePath(project.images[currentImageIndex])} 
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E비디오를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                    }}
+                  />
+                ) : (
+                  <img 
+                    src={getImagePath(project.images[currentImageIndex])} 
+                    alt={`${project.title} - 이미지 ${currentImageIndex + 1}`} 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                      e.currentTarget.onerror = null;
+                    }}
+                  />
+                )}
               </div>
               
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <button 
                   onClick={prevImage}
-                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110"
+                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110 cursor-pointer"
                   aria-label="이전 이미지"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,7 +184,7 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
                 </button>
                 <button 
                   onClick={nextImage}
-                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110"
+                  className="p-2 rounded-full bg-gray-900/70 hover:bg-gray-800 text-white transition-colors transform hover:scale-110 cursor-pointer"
                   aria-label="다음 이미지"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -191,7 +197,7 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
                 <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2 py-1.5">
                   <button
                     onClick={toggleAutoSlide}
-                    className={`absolute left-3 p-1.5 rounded-full transition-colors ${
+                    className={`absolute left-1 p-1.5 rounded-full transition-colors cursor-pointer ${
                       autoSlide ? 'bg-blue-500 text-white' : 'bg-gray-700 text-gray-300'
                     }`}
                     aria-label={autoSlide ? "자동 슬라이드 중지" : "자동 슬라이드 시작"}
@@ -225,15 +231,29 @@ const ProjectModal = ({ project, onClose }: { project: any, onClose: () => void 
             </div>
           ) : project.image ? (
             <div className="rounded-lg overflow-hidden border border-gray-700">
-              <img 
-                src={getImagePath(project.image)} 
-                alt={project.title} 
-                className="w-full h-auto object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
-                  e.currentTarget.onerror = null;
-                }}
-              />
+              {project.image.endsWith('.mov') ? (
+                <video 
+                  src={getImagePath(project.image)} 
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E비디오를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                  }}
+                />
+              ) : (
+                <img 
+                  src={getImagePath(project.image)} 
+                  alt={project.title} 
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none"%3E%3Crect width="800" height="450" fill="%23111827"/%3E%3Cpath d="M400 225C400 225 400 225 400 225C400 225 400 225 400 225C400 225 400 225 400 225Z" stroke="%236B7280" stroke-width="8"/%3E%3Ctext x="400" y="225" font-family="sans-serif" font-size="24" text-anchor="middle" fill="%236B7280"%3E이미지를 불러올 수 없습니다%3C/text%3E%3C/svg%3E';
+                    e.currentTarget.onerror = null;
+                  }}
+                />
+              )}
             </div>
           ) : null}
           
