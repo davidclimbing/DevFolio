@@ -10,8 +10,7 @@ const About = () => {
     github: "https://github.com/davidclimbing"
   };
   
-  // S3에서 프로필 이미지 가져오기
-  const profileImageUrl = "https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing/assets/about/profileImage.jpeg";
+  const profileImageUrl = "https://s3.ap-northeast-2.amazonaws.com/portfolio-contents.davidclimbing/assets/about/profileImage.JPG";
 
   if (isLoading) return <div className="py-16 text-center">Loading...</div>;
   if (!about) return null;

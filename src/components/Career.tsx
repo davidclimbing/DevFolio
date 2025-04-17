@@ -9,11 +9,11 @@ const Career = () => {
 
   // 업데이트된 경력 정보
   const updatedCareer = {
-    totalExperience: "2년 6개월+",
+    totalExperience: "2년 6개월",
     companies: [
       {
         name: "하베스트(HAVEST)",
-        period: "2023.2 ~ 현재",
+        period: "2023.2 ~ 2025.04",
         description: "전문직군 대상 글로벌 온라인 LMS 서비스",
         department: "개발팀",
         position: "Front-end 개발자",

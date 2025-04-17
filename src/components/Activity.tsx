@@ -4,7 +4,6 @@ import ScrollAnimation from './ScrollAnimation';
 const Activity = () => {
   const { activities, isLoading } = useActivitiesData();
 
-  // 업데이트된 활동 정보
   const updatedActivities = {
     translation: [
       {
@@ -17,7 +16,8 @@ const Activity = () => {
           { title: "웹소켓으로 AWS 비용 10억을 날리고 얻은 교훈", url: "https://yozm.wishket.com/magazine/detail/2902/" },
           { title: "비동기/대기보다 스레드가 유리한 이유", url: "https://yozm.wishket.com/magazine/detail/2918/" },
           { title: "1년동안 LLM과 프로그래밍하며 얻은 교훈", url: "https://yozm.wishket.com/magazine/detail/3002/" },
-          { title: "2025년 리액트 기술 스택 가이드", url: "https://yozm.wishket.com/magazine/detail/3029/" }
+          { title: "2025년 리액트 기술 스택 가이드", url: "https://yozm.wishket.com/magazine/detail/3029/" },
+          { title: "데이터베이스 쿼리 속도를 높이는 인덱스 활용법", url: "https://yozm.wishket.com/magazine/detail/3045/" }
         ]
       }
     ]
@@ -42,7 +42,7 @@ const Activity = () => {
             <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-2xl font-semibold text-blue-400 mb-4 text-center">기술 글 번역 활동</h3>
               {updatedActivities.translation.map((activity, index) => (
-                <div key={index} className="mb-6">
+                <div key={index}>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 text-center sm:text-left">
                     <h4 className="font-medium text-lg text-white mb-1 sm:mb-0">{activity.title}</h4>
                     <span className="text-sm text-gray-400">{activity.period}</span>
